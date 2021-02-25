@@ -1,1 +1,6 @@
-#test2
+---
+- name: deploy new VyOS router
+  hosts: xenservers
+  remote_user: root
+  vars_files:
+    - xenserver_vars.yaml

@@ -1,0 +1,12 @@
+---
+hostname: vyOS
+gateway: 0.0.0.0
+dnsservers: "9.9.9.9"
+network_name: "Network 0"
+sr_name: "Local storage"
+vm_template: "Other install media"
+vm_name: "vyOS"
+ipaddresses: 172.16.0.1
+vps_type: VM-S
+runetime_environment: testing
+vcpus: 1
