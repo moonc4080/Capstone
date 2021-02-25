@@ -7,7 +7,6 @@
 
 
 - name: Load VPS specs for chosen type
-  set_fact:
     memory: "8589934592"
     cpu_weight: "64"
     disksize: "53687091200"
