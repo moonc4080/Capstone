@@ -40,11 +40,11 @@
   when: vcpu_count >= "2"
 
 - name: Get the UUID of the disk
-    command: xe vm-disk-list vbd-params=device=xvda uuid={{ vmuuid.stdout }} --minimal
-    register: vdiuuid
+  command: xe vm-disk-list vbd-params=device=xvda uuid={{ vmuuid.stdout }} --minimal
+  register: vdiuuid
 
 - name: Set disk size
-    command: xe vdi-resize disk-size="{{ disksize }}" uuid={{ vdiuuid.stdout }}
+  command: xe vdi-resize disk-size="{{ disksize }}" uuid={{ vdiuuid.stdout }}
 
 - name: Set memory
   command: xe vm-memory-limits-set uuid={{ vmuuid.stdout }} dynamic-min="{{ memory }}" dynamic-max="{{ memory }}" static-max="{{ memory }}" static-min="{{ memory }}"
@@ -63,10 +63,10 @@
     when: '"Ubuntu" in vm_template'
 
 - name: Set preseed boot options
-    command: xe vm-param-set uuid={{ vmuuid.stdout }} PV-args="{{ boot_args }}"
+  command: xe vm-param-set uuid={{ vmuuid.stdout }} PV-args="{{ boot_args }}"
 
 - name: Set install repository
-    command: xe vm-param-set uuid={{ vmuuid.stdout }} other-config:install-repository={{ install_repository }}
+  command: xe vm-param-set uuid={{ vmuuid.stdout }} other-config:install-repository={{ install_repository }}
 
 - name: Create and attach CDROM drive
   command: xe vbd-create type=CD device=xvdd vm-uuid={{ vmuuid.stdout }} mode=ro
