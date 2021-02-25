@@ -60,3 +60,4 @@
 - name: Boot VM and start preseed installation
   command: xe vm-start uuid={{ vmuuid.stdout }}
 
+...
