@@ -52,19 +52,6 @@
 - name: Attach VM to {{ network_name }}
   command: xe vif-create vm-uuid={{ vmuuid.stdout }} network-uuid={{ networkuuid.stdout }} mac=random device=0
 
-- name: Load bootargs and install repo for Debian install
-    include_vars:
-      file=group_vars/Debian.yml
-    when: '"Debian" in vm_template'
-
-- name: Load bootargs and install repo for Ubuntu install
-    include_vars:
-      file=group_vars/Ubuntu.yml
-    when: '"Ubuntu" in vm_template'
-
-- name: Set preseed boot options
-  command: xe vm-param-set uuid={{ vmuuid.stdout }} PV-args="{{ boot_args }}"
-
 - name: Set install repository
   command: xe vm-param-set uuid={{ vmuuid.stdout }} other-config:install-repository={{ install_repository }}
 
