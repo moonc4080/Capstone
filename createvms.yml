@@ -8,7 +8,7 @@
 
 - name: Load VPS specs for chosen type
     memory: "8589934592"
-    cpu_weight: "64"
+    cpu_weight: "63"
     disksize: "53687091200"
 
 - name: Get UUID of share SR
