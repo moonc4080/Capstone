@@ -5,7 +5,6 @@
     username: "{{ root }}"
     password: "{{ MW8_o.tK?eUzq?&}p3^_pLw^Tf:DwYu# }}"
     validate_certs: no
-    folder: /testvms
     name: testvm_2
     state: poweredon
     template: Other install media
