@@ -1,5 +1,4 @@
 ---
-
 - name: Create a VM from a template
   community.general.xenserver_guest:
     hostname: "{{ citrix-mdvusfzd }}"
@@ -9,7 +8,7 @@
     folder: /testvms
     name: testvm_2
     state: poweredon
-    template: CentOS 7
+    template: Other install media
     disks:
     - size_gb: 10
       sr: Local storage
