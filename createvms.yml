@@ -1,63 +1,28 @@
 ---
-- name: deploy new VyOS router
-  hosts: xenservers
-  remote_user: root
-  vars_files:
-    - xenserver_VyOS_vars.yml
-
-
-- name: Load VPS specs for chosen type
-    memory: "8589934592"
-    cpu_weight: "61"
-    disksize: "53687091200"
-
-- name: Get UUID of share SR
-  command: xe sr-list name-label="{{ sr_name }}" --minimal
-  register: sruuid
-
-- name: Get the UUID of the VM template
-  command: xe template-list name-label="{{ vm_template }}" --minimal
-  register: templateuuid
-
-- name: Get the UUID of the network
-  command: xe network-list name-label="{{ network_name }}" --minimal
-  register: networkuuid
-
-- name: Deploy new VM
-  command: xe vm-install template={{ templateuuid.stdout }} new-name-label="{{ vm_name }} - {{ ipaddress }} - {{ vps_type }}" sr-uuid={{ sruuid.stdout }}
-  register: vmuuid 
-
-- name: Set vcpu priority
-  command: xe vm-param-set VCPUs-params:weight={{ cpu_weight }} uuid={{ vmuuid.stdout }}
-
-- name: Set vcpu count max
-  command: xe vm-param-set VCPUs-max={{ vcpu_count }} uuid={{ vmuuid.stdout }}
-  when: vcpu_count >= "2"
-
-- name: Set vcpu count at startup
-  command: xe vm-param-set VCPUs-at-startup={{ vcpu_count }} uuid={{ vmuuid.stdout }}
-  when: vcpu_count >= "2"
-
-- name: Get the UUID of the disk
-  command: xe vm-disk-list vbd-params=device=xvda uuid={{ vmuuid.stdout }} --minimal
-  register: vdiuuid
-
-- name: Set disk size
-  command: xe vdi-resize disk-size="{{ disksize }}" uuid={{ vdiuuid.stdout }}
-
-- name: Set memory
-  command: xe vm-memory-limits-set uuid={{ vmuuid.stdout }} dynamic-min="{{ memory }}" dynamic-max="{{ memory }}" static-max="{{ memory }}" static-min="{{ memory }}"
-
-- name: Attach VM to {{ network_name }}
-  command: xe vif-create vm-uuid={{ vmuuid.stdout }} network-uuid={{ networkuuid.stdout }} mac=random device=0
-
-- name: Set install repository
-  command: xe vm-param-set uuid={{ vmuuid.stdout }} other-config:install-repository={{ install_repository }}
-
-- name: Create and attach CDROM drive
-  command: xe vbd-create type=CD device=xvdd vm-uuid={{ vmuuid.stdout }} mode=ro
-
-- name: Boot VM and start preseed installation
-  command: xe vm-start uuid={{ vmuuid.stdout }}
-
+- name: Create a VM from a template
+  community.general.xenserver_guest:
+    hostname: "{{ citrix-mdvusfzd }}"
+    username: "{{ root }}"
+    password: "{{ MW8_o.tK?eUzq?&}p3^_pLw^Tf:DwYu# }}"
+    validate_certs: no
+    folder: /testvms
+    name: testvm_2
+    state: poweredon
+    template: Other install media
+    disks:
+    - size_gb: 10
+      sr: Local storage
+    hardware:
+      num_cpus: 6
+      num_cpu_cores_per_socket: 3
+      memory_mb: 2048
+    cdrom:
+      type: iso
+      iso_name: vyos-1.4-rolling-202102141111-amd64.iso
+    networks:
+    - name: Network 0
+      mac: aa:bb:dd:aa:00:14
+    wait_for_ip_address: yes
+  delegate_to: localhost
+  register: deploy
 ...
