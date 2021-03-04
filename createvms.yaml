@@ -1,6 +1,6 @@
 ---
 - name: "Create a VM from a template"
-- community.general.xenserver_guest:
+  community.general.xenserver_guest:
     hostname: "{{ citrix-mdvusfzd }}"
     username: "{{ root }}"
     password: "{{ MW8_o.tK?eUzq?&}p3^_pLw^Tf:DwYu# }}"
@@ -23,6 +23,6 @@
     - name: Network 0
       mac: aa:bb:dd:aa:00:14
     wait_for_ip_address: yes
-- delegate_to: localhost
-- register: deploy
+  delegate_to: localhost
+  register: deploy
 - hosts: all
