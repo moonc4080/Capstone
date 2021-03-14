@@ -40,12 +40,12 @@
         nics: vmnic3
       delegate_to: localhost
   
-  - name: Add Infrastructure 1 PG External - VLAN 100
-    vmware_portgroup:
-      hostname: '10.123.100.10'
-      esxi_hostname: '10.123.100.9'
-      switch: "{{ vswitch_name }}"
-      portgroup: Inf_1_External_PG
-      vlan_id: 100
-    delegate_to: localhost
+    - name: Add Infrastructure 1 PG External - VLAN 100
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: "{{ vswitch_name }}"
+        portgroup: Inf_1_External_PG
+        vlan_id: 100
+      delegate_to: localhost
 
