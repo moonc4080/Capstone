@@ -5,8 +5,11 @@
 #password defaults to VMWARE_PASSWORD env var from AWX
 #valid certs defaults to yes for SSL forced connections
 
+#vlan-id defaults to 0
+
+
 ---
-- name: Create vSwitches
+- name: Create vSwitches and Port Groups
   hosts: localhost
   gather_facts: no
   collections:
@@ -36,3 +39,13 @@
         switch: isp_vSwitch
         nics: vmnic3
       delegate_to: localhost
+  
+  -name: Add Infrastructure 1 PG External - VLAN 100
+    vmware_portgroup:
+      hostname: '10.123.100.10'
+      esxi_hostname: '10.123.100.9'
+      switch: "{{ vswitch_name }}"
+      portgroup: Inf_1_External_PG
+      vlan_id: 100
+    delegate_to: localhost
+
