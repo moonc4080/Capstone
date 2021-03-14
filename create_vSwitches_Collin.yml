@@ -18,7 +18,7 @@
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
-        nics: vnmic1
+        nics: vmmic1
       delegate_to: localhost
 
     - name: Add Infrastructure 3-4 vSwitch
@@ -26,7 +26,7 @@
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
-        nics: vnmic2
+        nics: vmnic2
       delegate_to: localhost
 
     - name: Add ISP vSwitch
@@ -34,5 +34,5 @@
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: isp_vSwitch
-        nics: vnmic3
+        nics: vmmic3
       delegate_to: localhost
