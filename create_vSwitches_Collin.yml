@@ -6,26 +6,29 @@
 #valid certs defaults to yes for SSL forced connections
 
 ---
-- name: Add Infrastructure 1-2 vSwitch
-  community.vmware.vmware_vswitch:
-    hostname: '10.123.100.10'
-    esxi_hostname: '10.123.100.9'
-    switch: infrastructure_1_2_vSwitch
-    nics: vnmic1
-  delegate_to: localhost
+- name: Create vSwitches
+  hosts: localhost
+  tasks:
+    - name: Add Infrastructure 1-2 vSwitch
+      community.vmware.vmware_vswitch:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        nics: vnmic1
+      delegate_to: localhost
 
-- name: Add Infrastructure 3-4 vSwitch
-  community.vmware.vmware_vswitch:
-    hostname: '10.123.100.10'
-    esxi_hostname: '10.123.100.9'
-    switch: infrastructure_3_4_vSwitch
-    nics: vnmic2
-  delegate_to: localhost
+    - name: Add Infrastructure 3-4 vSwitch
+      community.vmware.vmware_vswitch:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        nics: vnmic2
+      delegate_to: localhost
 
-- name: Add ISP vSwitch
-  community.vmware.vmware_vswitch:
-    hostname: '10.123.100.10'
-    esxi_hostname: '10.123.100.9'
-    switch: isp_vSwitch
-    nics: vnmic3
-  delegate_to: localhost
+    - name: Add ISP vSwitch
+      community.vmware.vmware_vswitch:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: isp_vSwitch
+        nics: vnmic3
+      delegate_to: localhost
