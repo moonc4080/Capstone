@@ -11,7 +11,7 @@
   gather_facts: no
 
   collections:
-  - community.vmware:
+  - community.vmware
 
 
   tasks:
