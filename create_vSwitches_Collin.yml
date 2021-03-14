@@ -49,3 +49,173 @@
         vlan_id: 100
       delegate_to: localhost
 
+    - name: Add Infrastructure 1 PG Internal - VLAN 101
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_1_Internal_PG
+        vlan_id: 101
+      delegate_to: localhost
+
+    - name: Add Infrastructure 1 PG Users - VLAN 102
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_1_Users_PG
+        vlan_id: 102
+      delegate_to: localhost
+
+    - name: Add Infrastructure 1 PG Guest - VLAN 103
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_1_Guest_PG
+        vlan_id: 103
+      delegate_to: localhost
+
+    - name: Add Infrastructure 1 PG DMZ - VLAN 104
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_1_DMZ_PG
+        vlan_id: 104
+      delegate_to: localhost
+
+    - name: Add Infrastructure 2 PG External - VLAN 105
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_2_External_PG
+        vlan_id: 105
+      delegate_to: localhost
+
+    - name: Add Infrastructure 2 PG Internal - VLAN 106
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_2_Internal_PG
+        vlan_id: 106
+      delegate_to: localhost
+
+    - name: Add Infrastructure 2 PG Users - VLAN 107
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_2_Users_PG
+        vlan_id: 107
+      delegate_to: localhost
+
+    - name: Add Infrastructure 2 PG Guest - VLAN 108
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_2_Guest_PG
+        vlan_id: 108
+      delegate_to: localhost
+
+    - name: Add Infrastructure 2 PG DMZ - VLAN 109
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_1_2_vSwitch
+        portgroup: Inf_2_DMZ_PG
+        vlan_id: 109
+      delegate_to: localhost
+
+    - name: Add Infrastructure 3 PG External - VLAN 110
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_3_External_PG
+        vlan_id: 110
+      delegate_to: localhost
+
+    - name: Add Infrastructure 3 PG Internal - VLAN 111
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_3_Internal_PG
+        vlan_id: 111
+      delegate_to: localhost
+
+    - name: Add Infrastructure 3 PG Users - VLAN 112
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_3_Users_PG
+        vlan_id: 112
+      delegate_to: localhost
+
+    - name: Add Infrastructure 3 PG Guest - VLAN 113
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_3_Guest_PG
+        vlan_id: 113
+      delegate_to: localhost
+
+    - name: Add Infrastructure 3 PG DMZ - VLAN 114
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_3_DMZ_PG
+        vlan_id: 114
+      delegate_to: localhost
+
+    - name: Add Infrastructure 4 PG External - VLAN 115
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_4_External_PG
+        vlan_id: 115
+      delegate_to: localhost
+
+    - name: Add Infrastructure 4 PG Internal - VLAN 116
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_4_Internal_PG
+        vlan_id: 116
+      delegate_to: localhost
+
+    - name: Add Infrastructure 4 PG Users - VLAN 117
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_4_Users_PG
+        vlan_id: 117
+      delegate_to: localhost
+
+    - name: Add Infrastructure 4 PG Guest - VLAN 118
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_4_Guest_PG
+        vlan_id: 118
+      delegate_to: localhost
+
+    - name: Add Infrastructure 4 PG DMZ - VLAN 119
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        portgroup: Inf_4_DMZ_PG
+        vlan_id: 119
+      delegate_to: localhost
