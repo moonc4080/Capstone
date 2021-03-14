@@ -5,6 +5,7 @@
 #password defaults to VMWARE_PASSWORD env var from AWX
 #valid certs defaults to yes for SSL forced connections
 
+---
 - name: Add Infrastructure 1-2 vSwitch
   community.vmware.vmware_vswitch:
     hostname: '10.123.100.10'
