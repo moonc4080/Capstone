@@ -219,3 +219,11 @@
         portgroup: Inf_4_DMZ_PG
         vlan_id: 119
       delegate_to: localhost
+
+    - name: Add ISP PG - VLAN 0
+      vmware_portgroup:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: isp_vSwitch
+        portgroup: ISP_PG
+      delegate_to: localhost
