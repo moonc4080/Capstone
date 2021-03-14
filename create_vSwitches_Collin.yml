@@ -1,4 +1,9 @@
 #Creates the two infrastructure vSwitches and ISP vSwitch on the Capstone ESXi server
+#mtu defaults to 1500
+#port defaults to 443
+#username defaults to VMWARE_USER env var from AWX
+#password defaults to VMWARE_PASSWORD env var from AWX
+#valid certs defaults to yes for SSL forced connections
 
 - name: Add Infrastructure 1-2 vSwitch
   community.vmware.vmware_vswitch:
