@@ -8,6 +8,9 @@
 ---
 - name: Create vSwitches
   hosts: localhost
+  gather_facts: no
+
+
   tasks:
     - name: Add Infrastructure 1-2 vSwitch
       community.vmware.vmware_vswitch:
