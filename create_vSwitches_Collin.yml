@@ -44,7 +44,7 @@
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
-        switch: "{{ vswitch_name }}"
+        switch: infrastructure_1_2_vSwitch
         portgroup: Inf_1_External_PG
         vlan_id: 100
       delegate_to: localhost
