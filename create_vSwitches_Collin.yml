@@ -10,10 +10,6 @@
   hosts: localhost
   gather_facts: no
 
-  collections:
-  - community.vmware
-
-
   tasks:
     - name: Add Infrastructure 1-2 vSwitch
       community.vmware.vmware_vswitch:
