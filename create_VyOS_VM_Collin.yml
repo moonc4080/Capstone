@@ -28,7 +28,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: test_vyOS_Deploy
-        guest_id: debian9_64Guest
+        guest_id: debian10Guest
         state: poweredon
         disk:
         - size_gb: 10
