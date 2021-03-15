@@ -28,7 +28,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: test_vyOS_Deploy
-        guest_id: otherGuest
+        guest_id: ubuntu64Guest
         state: poweredon
         disk:
         - size_gb: 10
