@@ -26,6 +26,7 @@
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
+        folder: /Datacenter/vm
         name: test_vyOS_Deploy
         state: poweredon
         disk:
