@@ -1,12 +1,15 @@
+#Author: Collin Moon
 #Creates the two infrastructure vSwitches and ISP vSwitch on the Capstone ESXi server
+#Then creates security zone port groups tagged by VLAN for all infrastrucutres
+#Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_vswitch_module.html#ansible-collections-community-vmware-vmware-vswitch-module
+
+#Defaults:
 #mtu defaults to 1500
 #port defaults to 443
 #username defaults to VMWARE_USER env var from AWX
 #password defaults to VMWARE_PASSWORD env var from AWX
 #valid certs defaults to yes for SSL forced connections
-
 #vlan-id defaults to 0
-
 
 ---
 - name: Create vSwitches and Port Groups
