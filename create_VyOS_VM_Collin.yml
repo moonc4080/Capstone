@@ -28,7 +28,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: test_vyOS_Deploy
-        guest_id: debian10_64Guest #thiss fails the deployment sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        guest_id: other64Guest #thiss fails the deployment sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         state: poweredon
         disk:
         - size_gb: 10
@@ -44,7 +44,7 @@
           hotremove_cpu: True
           hotadd_memory: False
           version: 12 # Hardware version of virtual machine
-          boot_firmware: 'efi'
+          boot_firmware: efi
         cdrom:
             - controller_number: 0
               unit_number: 0
