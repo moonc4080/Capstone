@@ -28,7 +28,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: test_vyOS_Deploy
-        guest_id: debian10_64Guest #this fails the deployment sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        guest_id: debian10_64Guest #thiss fails the deployment sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         state: poweredon
         disk:
         - size_gb: 10
