@@ -8,3 +8,6 @@ vm_template: "Other install media"
 vm_name: "vyOS"
 ipaddresses: "172.16.0.2"
 vcpus: "1"
+
+something
+asda
