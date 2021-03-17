@@ -12,14 +12,14 @@
         config:
         - name: eth0
           ipv4:
-          - address: 10.50.50.1 # ipaddress of the "physical" ethernet, randomly made don't keep
+          - address: 10.50.50.1 # ipaddress of the "physical" ethernet, randomly made (don't keep)
           vifs: #virtualization starts here
           - vlan_id: 101 # sets vlanID for current interface
             ipv4:
             - address: dhcp #virtual IP address can be called with dhcp
           - vlan_id: 102
             ipv4:
-            - address: 10.50.50.2 #randomly made addresses, don't keep
+            - address: 10.50.50.2 #randomly made addresses, (don't keep)
         state: merged # merges this current with new
     - name: Creates Static IP's  #Can work on loop once i get a file for it
       vyos_static_route:
