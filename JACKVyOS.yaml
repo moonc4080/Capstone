@@ -1,0 +1,79 @@
+---
+- name: Merge VyOS VM to this config
+  hosts: localhost
+  gather_facts: no
+  collections:
+    - vyos.vyos
+
+# main use: ip address on physical interface and virtual, create VlanID then merge
+  tasks:  
+    - name: merges all device configuration with provided configuration
+      vyos.vyos.vyos_l3_interfaces:
+        config:
+        - name: eth0
+          ipv4:
+          - address: 10.50.50.1 # ipaddress of the "physical" ethernet, randomly made don't keep
+          vifs: #virtualization starts here
+          - vlan_id: 101 # sets vlanID for current interface
+            ipv4:
+            - address: dhcp #virtual IP address can be called with dhcp
+          - vlan_id: 102
+            ipv4:
+            - address: 10.50.50.2 #randomly made addresses, don't keep
+        state: merged # merges this current with new
+
+- name: Creates Static IP's  #Can work on loop once i get a file for it
+  vyos_static_route:
+    prefix: 10.50.50.5 # configured ip
+    mask: 24
+    next_hop: 10.50.50.9 # next hop ip address
+    ansible_connection: network_cli # SSH over CLI connection
+
+
+
+# notes: (will delete later)
+
+# ask about: NAT, Logging, how to use ansible_connection: network_cli
+
+#https://docs.ansible.com/ansible/2.9/modules/list_of_network_modules.html#vyos everything for VyOS
+
+#----------------------------------
+# needed to install: "ansible-galaxy collection install vyos.vyos." for task1
+# Task 1 DHCP and config of interfaces
+
+# potential for looping: IP address for vlans? 
+# Interfaces:     -
+# eth0: dhcp     -creating a dictionary for each interface
+# eth1: 10.50.50.1   -
+#
+# to use: - address: '{{ interfaces.eth0 }}'
+#
+#https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
+
+#------------------------
+
+# Task 2: NAT
+# uses base so no install 
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/iptables_module.html
+# https://github.com/sterin/ansible-role-nat-router/tree/master/templates
+
+#- name: NAT configuration (WIP)
+#  iptables:
+#      action: append # append replaces old configuration with new, Change to INSERT to insert instead of replace
+#      chain: FORWARD # specifies what iptables need to be modified can be connected to in_interface
+#      in_interface: eth0 # specifies the IN interface, where packets are about to go    >>Packet   >>in  >  out 
+#      out_interface: eth1 #W here packets are being sent     in > >>out    >Packet
+#      source: "{{ lan_ip_range }}"
+#      match: conntrack
+#      ctstate: NEW
+#      jump: ACCEPT
+#    notify: persist iptables
+
+#------------------------
+
+# Task 3: NTP (almost no documentation)
+
+#------------------------
+
+# Task 4: Static IP
+#https://docs.ansible.com/ansible/2.9/modules/vyos_static_route_module.html#vyos-static-route-module
