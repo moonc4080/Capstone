@@ -21,13 +21,12 @@
             ipv4:
             - address: 10.50.50.2 #randomly made addresses, don't keep
         state: merged # merges this current with new
-
-- name: Creates Static IP's  #Can work on loop once i get a file for it
-  vyos_static_route:
-    prefix: 10.50.50.5 # configured ip
-    mask: 24
-    next_hop: 10.50.50.9 # next hop ip address
-    ansible_connection: network_cli # SSH over CLI connection
+    - name: Creates Static IP's  #Can work on loop once i get a file for it
+      vyos_static_route:
+        prefix: 10.50.50.5 # configured ip
+        mask: 24
+        next_hop: 10.50.50.9 # next hop ip address
+        ansible_connection: network_cli # SSH over CLI connection
 
 
 
