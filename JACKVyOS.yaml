@@ -17,7 +17,7 @@
           #- vlan_id: 100 # sets vlanID for current interface
           ipv4:
           - address: 10.50.50.1 # ipaddress of the "physical" ethernet, randomly made (don't keep)
-    state: merged # merges this current with new
+      state: merged # merges this current with new
 
     - name: Creates Static IP's  #Can work on loop once i get a file for it
       vyos_static_route:
