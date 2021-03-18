@@ -1,0 +1,174 @@
+#Author: Collin Moon
+#Creates a VyOS VM from a template as a test
+#Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
+
+#Defaults
+#port defaults to 443
+#username defaults to VMWARE_USER env var from AWX
+#password defaults to VMWARE_PASSWORD env var from AWX
+#valid certs defaults to yes for SSL forced connections
+#power_on_after_clone defaults to yes
+#state defaults to present
+#controller_type defaults to ide
+#type defaults to client (CD-ROM type)
+#diskmode defaults to persistant
+
+---
+- name: Create VyOS Edge Router VMs
+  hosts: localhost
+  gather_facts: no
+  collections:
+    - community.vmware
+
+  tasks: 
+    - name: Create a VyOS VM for Infrastructure 1
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 1
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        state: poweredon
+        disk:
+        - size_gb: 10
+          controller_type: lsilogicsas
+          type: thin
+          datastore: Capstone_Local_DS_VMs
+        hardware:
+          memory_mb: 1024
+          num_cpus: 1
+          num_cpu_cores_per_socket: 1
+          scsi: paravirtual
+          hotadd_cpu: True
+          hotremove_cpu: True
+          hotadd_memory: False
+          version: 12 # Hardware version of virtual machine
+          boot_firmware: efi
+        cdrom:
+            - controller_number: 0
+              unit_number: 0
+              state: present
+              type: iso
+              iso_path: '[Capstone_Local_DS] ISOs/vyos.iso'
+        networks:
+        - name: ISP_PG
+        - name: Inf_1_External_PG
+        - name: Temporary Configuration PG
+        #wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a VyOS VM for Infrastructure 2
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 2
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        state: poweredon
+        disk:
+        - size_gb: 10
+          controller_type: lsilogicsas
+          type: thin
+          datastore: Capstone_Local_DS_VMs
+        hardware:
+          memory_mb: 1024
+          num_cpus: 1
+          num_cpu_cores_per_socket: 1
+          scsi: paravirtual
+          hotadd_cpu: True
+          hotremove_cpu: True
+          hotadd_memory: False
+          version: 12 # Hardware version of virtual machine
+          boot_firmware: efi
+        cdrom:
+            - controller_number: 0
+              unit_number: 0
+              state: present
+              type: iso
+              iso_path: '[Capstone_Local_DS] ISOs/vyos.iso'
+        networks:
+        - name: ISP_PG
+        - name: Inf_2_External_PG
+        - name: Temporary Configuration PG
+        #wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a VyOS VM for Infrastructure 3
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 3
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        state: poweredon
+        disk:
+        - size_gb: 10
+          controller_type: lsilogicsas
+          type: thin
+          datastore: Capstone_Local_DS_VMs
+        hardware:
+          memory_mb: 1024
+          num_cpus: 1
+          num_cpu_cores_per_socket: 1
+          scsi: paravirtual
+          hotadd_cpu: True
+          hotremove_cpu: True
+          hotadd_memory: False
+          version: 12 # Hardware version of virtual machine
+          boot_firmware: efi
+        cdrom:
+            - controller_number: 0
+              unit_number: 0
+              state: present
+              type: iso
+              iso_path: '[Capstone_Local_DS] ISOs/vyos.iso'
+        networks:
+        - name: ISP_PG
+        - name: Inf_3_External_PG
+        - name: Temporary Configuration PG
+        #wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a VyOS VM for Infrastructure 4
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 4
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        state: poweredon
+        disk:
+        - size_gb: 10
+          controller_type: lsilogicsas
+          type: thin
+          datastore: Capstone_Local_DS_VMs
+        hardware:
+          memory_mb: 1024
+          num_cpus: 1
+          num_cpu_cores_per_socket: 1
+          scsi: paravirtual
+          hotadd_cpu: True
+          hotremove_cpu: True
+          hotadd_memory: False
+          version: 12 # Hardware version of virtual machine
+          boot_firmware: efi
+        cdrom:
+            - controller_number: 0
+              unit_number: 0
+              state: present
+              type: iso
+              iso_path: '[Capstone_Local_DS] ISOs/vyos.iso'
+        networks:
+        - name: ISP_PG
+        - name: Inf_4_External_PG
+        - name: Temporary Configuration PG
+        #wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy   
