@@ -1,0 +1,19 @@
+---
+
+hostname: VYOS-Edge
+domain_name: local
+
+interfaces:
+  eth1: #idk if this is right, could be eth0
+    alias: connection rtr-2
+    address: 10.0.255.1 # fake adress idk what to connect to
+    mask: /30
+
+bgp:
+  asn: 65001
+  neighbor:
+    - {address: 10.0.255.2, remote_as: 45000}
+    - {address: 10.0.255.6, remote_as: 45000}
+  networks:
+    - {network: 10.0.255.0, mask: /30}
+  maxpath: 2

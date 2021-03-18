@@ -1,0 +1,8 @@
+tasks:
+    - name: validate connection from rtr-1
+      vyos_command:
+        commands: 'ping {{ item }} count 4'
+      when: "'rtr-1' in inventory_hostname"
+      with_items:
+        - '10.0.255.2' # pings items, items are IP addresses
+        - '10.0.255.6'
