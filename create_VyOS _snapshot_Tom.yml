@@ -24,47 +24,43 @@
     - name: Create a VyOS VM Snapshot for Infrastructure 1
       vmware_guest_snapshot:
         hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 1
         state: present
         snapshot_name: VyOS 1 Snap
-        description: Infratstructure 1
+        description: Infrastructure 1
       delegate_to: localhost
 
     - name: Create a VyOS VM Snapshot for Infrastructure 2
       vmware_guest_snapshot:
         hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 2
         state: present
         snapshot_name: VyOS 2 Snap
-        description: Infratstructure 2
+        description: Infrastructure 2
       delegate_to: localhost
 
     - name: Create a VyOS VM Snapshot for Infrastructure 3
       vmware_guest_snapshot:
         hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 3
         state: present
         snapshot_name: VyOS 3 Snap
-        description: Infratstructure 3
+        description: Infrastructure 3
       delegate_to: localhost
 
     - name: Create a VyOS VM Snapshot for Infrastructure 4
       vmware_guest_snapshot:
         hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 4
         state: present
         snapshot_name: VyOS 4 Snap
-        description: Infratstructure 4
+        description: Infrastructure 4
       delegate_to: localhost
