@@ -5,7 +5,7 @@ domain_name: local
 
 interfaces:
   eth1: #idk if this is right, could be eth0
-    alias: connection rtr-2
+    alias: connection to ISP
     address: 10.0.255.1 # fake adress idk what to connect to
     mask: /30
 
