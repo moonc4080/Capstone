@@ -55,7 +55,7 @@
         - name: ISP_PG
         - name: Inf_1_External_PG
         - name: Temporary Configuration PG
-        wait_for_ip_address: true
+        #wait_for_ip_address: true
       delegate_to: localhost
       register: deploy
 
@@ -93,7 +93,7 @@
         - name: ISP_PG
         - name: Inf_2_External_PG
         - name: Temporary Configuration PG
-        wait_for_ip_address: true
+        #wait_for_ip_address: true
       delegate_to: localhost
       register: deploy
 
@@ -131,7 +131,7 @@
         - name: ISP_PG
         - name: Inf_3_External_PG
         - name: Temporary Configuration PG
-        wait_for_ip_address: true
+        #wait_for_ip_address: true
       delegate_to: localhost
       register: deploy
 
@@ -169,6 +169,6 @@
         - name: ISP_PG
         - name: Inf_4_External_PG
         - name: Temporary Configuration PG
-        wait_for_ip_address: true
+        #wait_for_ip_address: true
       delegate_to: localhost
       register: deploy   
