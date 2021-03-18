@@ -1,7 +1,7 @@
-#Author: Collin Moon and Tom Simono
-#Powers off the VyOS VM for each infrastructure and then creates a snapshot of the VyOS VM
+#Author: Collin Moon
+#Powers off the VyOS VM for each infrastructure
 #Ansible Docs vmware_guest module: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
-#Ansible Docs vmware_guest_snapshot module: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_snapshot_module.html#ansible-collections-community-vmware-vmware-guest-snapshot-module
+
 
 
 #Defaults for VM Creation
@@ -54,50 +54,4 @@
         esxi_hostname: '10.123.100.9'
         name: VyOS Infrastructure 4
         state: poweredoff
-      delegate_to: localhost
-
-    #VMs are powered down and begining snapshot tasks
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 1
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 1
-        state: present
-        snapshot_name: VyOS 1 Snap
-        description: Infrastructure 1
-      delegate_to: localhost
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 2
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 2
-        state: present
-        snapshot_name: VyOS 2 Snap
-        description: Infrastructure 2
-      delegate_to: localhost
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 3
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 3
-        state: present
-        snapshot_name: VyOS 3 Snap
-        description: Infrastructure 3
-      delegate_to: localhost
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 4
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 4
-        state: present
-        snapshot_name: VyOS 4 Snap
-        description: Infrastructure 4
       delegate_to: localhost
