@@ -22,7 +22,7 @@
 
   tasks: 
     - name: Create a VyOS VM Snapshot for Infrastructure 1
-      community.vmware.vmware_guest_snapshot:
+      community.vmware.vyos:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
@@ -34,7 +34,7 @@
       delegate_to: localhost
 
     - name: Create a VyOS VM Snapshot for Infrastructure 2
-      community.vmware.vmware_guest_snapshot:
+      community.vmware.vyos:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
@@ -46,7 +46,7 @@
       delegate_to: localhost
 
     - name: Create a VyOS VM Snapshot for Infrastructure 3
-      community.vmware.vmware_guest_snapshot:
+      community.vmware.vyos:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
@@ -58,7 +58,7 @@
       delegate_to: localhost
 
     - name: Create a VyOS VM Snapshot for Infrastructure 4
-      community.vmware.vmware_guest_snapshot:
+      community.vmware.vyos:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
