@@ -1,0 +1,70 @@
+#Author: Tom Simono
+#Creates a snapshot of VyOS VM from a template as a test
+#Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
+
+#Defaults
+#port defaults to 443
+#username defaults to VMWARE_USER env var from AWX
+#password defaults to VMWARE_PASSWORD env var from AWX
+#valid certs defaults to yes for SSL forced connections
+#power_on_after_clone defaults to yes
+#state defaults to present
+#controller_type defaults to ide
+#type defaults to client (CD-ROM type)
+#diskmode defaults to persistant
+
+---
+- name: Create VyOS Edge Router VM Snapshots
+  hosts: localhost
+  gather_facts: no
+  collections:
+    - community.vmware
+
+  tasks: 
+    - name: Create a VyOS VM Snapshot for Infrastructure 1
+      community.vmware.vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 1
+        state: present
+        snapshot_name: VyOS 1 Snap
+        description: Infratstructure 1
+      delegate_to: localhost
+
+    - name: Create a VyOS VM Snapshot for Infrastructure 2
+      community.vmware.vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 2
+        state: present
+        snapshot_name: VyOS 2 Snap
+        description: Infratstructure 2
+      delegate_to: localhost
+
+    - name: Create a VyOS VM Snapshot for Infrastructure 3
+      community.vmware.vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 3
+        state: present
+        snapshot_name: VyOS 3 Snap
+        description: Infratstructure 3
+      delegate_to: localhost
+
+    - name: Create a VyOS VM Snapshot for Infrastructure 4
+      community.vmware.vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS Infrastructure 4
+        state: present
+        snapshot_name: VyOS 4 Snap
+        description: Infratstructure 4
+      delegate_to: localhost
