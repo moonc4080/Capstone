@@ -31,11 +31,5 @@
         template: VyOS_Template_Inf_1
         state: poweredon
         wait_for_ip_address: true
-        # networks:
-        # - name: ISP_PG
-        # - name: Inf_1_External_PG
-        # - name: Temporary Configuration PG
-        #   # ip: 10.123.100.12
-        #   # netmask: 255.0.0.0
       delegate_to: localhost
       register: deploy
