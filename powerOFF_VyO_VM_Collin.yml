@@ -29,7 +29,6 @@
         state: poweredoff
       delegate_to: localhost
       
-
     - name: Power OFF VyOS VM for Infrastructure 2
       vmware_guest:
         hostname: '10.123.100.10'
