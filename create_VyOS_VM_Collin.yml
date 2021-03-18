@@ -28,7 +28,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 1
-        guest_id: 'debian10Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         state: poweredon
         disk:
         - size_gb: 10
@@ -66,7 +66,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 2
-        guest_id: 'debian10Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         state: poweredon
         disk:
         - size_gb: 10
@@ -104,7 +104,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 3
-        guest_id: 'debian10Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         state: poweredon
         disk:
         - size_gb: 10
@@ -142,7 +142,7 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: VyOS Infrastructure 4
-        guest_id: 'debian10Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+        guest_id: 'debian7Guest' #sourced from: https://code.vmware.com/apis/358/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         state: poweredon
         disk:
         - size_gb: 10
