@@ -1,4 +1,6 @@
-- name: Create a VyOS instance
+---
+
+- name: Create a Nat Instance
   hosts: localhost
   gather_facts: True
   connection: local
@@ -8,6 +10,8 @@
   tasks:
   - name: Configure descriptions
     vyos_config:
+       hostname: '10.123.100.10'
+       esxi_hostname: '10.123.100.9'
        lines:
          #- set interfaces ethernet eth0 address dhcp 
          - set interfaces ethernet eth1 description 'OUTSIDE' 
@@ -15,13 +19,20 @@
          - set interfaces ethernet eth0 description 'INSIDE' 
 #       save: yes
     ignore_errors: yes
+    delegate_to: localhost
+    register: deploy
 
   - name: Configure Source NAT for our "Inside" network
     vyos_config:
+       hostname: '10.123.100.10'
+       esxi_hostname: '10.123.100.9'
        lines:
          - set nat source rule 10 outbound-interface 'eth1' # Basically the exit door    > NAT >O
          - set nat source rule 10 source address '192.168.0.5' # These are the ip's that are pre-NAT, they are going to change to the interface IP
          - set nat source rule 10 translation address masquerade #  The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface"
+    delegate_to: localhost
+    register: deploy
+  
 #       save: yes
 
 # how to check? >show nat source translations 
