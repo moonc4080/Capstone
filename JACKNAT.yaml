@@ -7,7 +7,7 @@
   collections:
    - vyos.vyos
 
-  tasks:
+  tasks: 
   - name: Configure descriptions
     vyos_config:
       timeout: 30
@@ -30,6 +30,11 @@
       save: yes
     delegate_to: localhost
     register: deploy
+
+  - name: Show the Configuration
+    vyos_command:  
+       commands:
+         - show configuration commands
 
 
 # how to check? >show nat source translations 
