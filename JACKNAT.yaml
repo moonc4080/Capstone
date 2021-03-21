@@ -21,13 +21,13 @@
     delegate_to: localhost
     register: deploy
 
-  - name: Configure Source NAT for our "Inside" network
+  - name: Configure Source NAT for our Inside network
     vyos_config:
       lines:
          - set nat source rule 10 outbound-interface 'eth1' # Basically the exit door    > NAT >O
          - set nat source rule 10 source address '192.168.0.5' # These are the ip's that are pre-NAT, they are going to change to the interface IP
          - set nat source rule 10 translation address masquerade #  The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface"
-    save: yes
+      save: yes
     delegate_to: localhost
     register: deploy
 
