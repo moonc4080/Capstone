@@ -2,6 +2,8 @@
   hosts: localhost
   gather_facts: True
   connection: local
+  collections:
+   - vyos.vyos
 
   tasks:
   - name: Configure descriptions
