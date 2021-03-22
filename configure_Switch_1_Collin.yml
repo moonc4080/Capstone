@@ -14,46 +14,46 @@
     - name: Create VLANs 110-119 on Infrastructure 3-4
       ios_vlans:
         config:
-          - name: Vlan_110
-            vlan_id: 110
-            state: active
-            shutdown: disabled
-          - name: Vlan_111
-            vlan_id: 111
-            state: active
-            shutdown: disabled
-          - name: Vlan_112
-            vlan_id: 112
-            state: active
-            shutdown: disabled
-          - name: Vlan_113
-            vlan_id: 113
-            state: active
-            shutdown: disabled
-          - name: Vlan_114
-            vlan_id: 114
-            state: active
-            shutdown: disabled
-          - name: Vlan_115
-            vlan_id: 115
-            state: active
-            shutdown: disabled 
-          - name: Vlan_116
-            vlan_id: 116
-            state: active
-            shutdown: disabled 
-          - name: Vlan_117
-            vlan_id: 117
-            state: active
-            shutdown: disabled 
-          - name: Vlan_118
-            vlan_id: 118
-            state: active
-            shutdown: disabled
-          - name: Vlan_119
-            vlan_id: 119
-            state: active
-            shutdown: disabled 
+        - name: Vlan_110
+          vlan_id: 110
+          state: active
+          shutdown: disabled
+        - name: Vlan_111
+          vlan_id: 111
+          state: active
+          shutdown: disabled
+        - name: Vlan_112
+          vlan_id: 112
+          state: active
+          shutdown: disabled
+        - name: Vlan_113
+          vlan_id: 113
+          state: active
+          shutdown: disabled
+        - name: Vlan_114
+          vlan_id: 114
+          state: active
+          shutdown: disabled
+        - name: Vlan_115
+          vlan_id: 115
+          state: active
+          shutdown: disabled 
+        - name: Vlan_116
+          vlan_id: 116
+          state: active
+          shutdown: disabled 
+        - name: Vlan_117
+          vlan_id: 117
+          state: active
+          shutdown: disabled 
+        - name: Vlan_118
+          vlan_id: 118
+          state: active
+          shutdown: disabled
+        - name: Vlan_119
+          vlan_id: 119
+          state: active
+          shutdown: disabled 
         state: replaced #Replaces device configuration of listed VLANs with provided configuration
 
 #switch 1
