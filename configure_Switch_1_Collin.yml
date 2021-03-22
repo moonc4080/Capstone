@@ -10,7 +10,7 @@
     - cisco.ios
 
 #switch 1
-
+  tasks:
     - name: Create VLANs 110-119 on Infrastructure 3-4
       ios_vlans:
         config:
