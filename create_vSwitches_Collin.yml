@@ -21,8 +21,8 @@
   tasks:
     - name: Add Infrastructure 1-2 vSwitch
       vmware_vswitch:
-        hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
+        hostname: '10.123.100.10' #vcenter host
+        esxi_hostname: '10.123.100.9' #capstone ESXi host
         switch: infrastructure_1_2_vSwitch
         nics: vmnic1
       delegate_to: localhost
