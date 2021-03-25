@@ -9,7 +9,7 @@
   collections:
     - cisco.ios
 
-#switch 1
+#switch 2
   tasks:
     - name: Create VLANs 110-119 on Infrastructure 3-4
       ios_vlans:
@@ -56,16 +56,11 @@
           shutdown: disabled 
         state: replaced #Replaces device configuration of listed VLANs with provided configuration
 
-#switch 1
+#switch 2
 
-    - name: Configure G1/0/1-4 as VLAN 110
+    - name: Configure G1/0/2-4 as VLAN 110
       ios_l2_interfaces:
         config:
-        - name: GigabitEthernet1/0/1
-          mode: access
-          access: 
-            vlan: 110
-          enabled: true
         - name: GigabitEthernet1/0/2
           mode: access
           access: 
@@ -80,17 +75,17 @@
           mode: access
           access: 
             vlan: 110
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/5-8 as VLAN 111
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/5
           mode: access
           access: 
-            vlan: 111
-          enabled: true
+            vlan: 110
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/6-9 as VLAN 111
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/6
           mode: access
           access: 
@@ -105,17 +100,17 @@
           mode: access
           access: 
             vlan: 111
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/9-12 as VLAN 112
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/9
           mode: access
           access: 
-            vlan: 112
-          enabled: true
+            vlan: 111
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/10-13 as VLAN 112
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/10
           mode: access
           access: 
@@ -130,17 +125,17 @@
           mode: access
           access: 
             vlan: 112
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/13-16 as VLAN 113
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/13
           mode: access
           access: 
-            vlan: 113
-          enabled: true
+            vlan: 112
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/14-17 as VLAN 113
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/14
           mode: access
           access: 
@@ -155,17 +150,17 @@
           mode: access
           access: 
             vlan: 113
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/17-20 as VLAN 114
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/17
           mode: access
           access: 
-            vlan: 114
-          enabled: true
+            vlan: 113
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/18-21 as VLAN 114
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/18
           mode: access
           access: 
@@ -180,17 +175,17 @@
           mode: access
           access: 
             vlan: 114
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/21-24 as VLAN 115
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/21
           mode: access
           access: 
-            vlan: 115
-          enabled: true
+            vlan: 114
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/22-25 as VLAN 115
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/22
           mode: access
           access: 
@@ -205,17 +200,17 @@
           mode: access
           access: 
             vlan: 115
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/25-28 as VLAN 116
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/25
           mode: access
           access: 
-            vlan: 116
-          enabled: true
+            vlan: 115
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/26-29 as VLAN 116
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/26
           mode: access
           access: 
@@ -230,17 +225,17 @@
           mode: access
           access: 
             vlan: 116
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/29-32 as VLAN 117
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/29
           mode: access
           access: 
-            vlan: 117
-          enabled: true
+            vlan: 116
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/30-33 as VLAN 117
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/30
           mode: access
           access: 
@@ -255,17 +250,17 @@
           mode: access
           access: 
             vlan: 117
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/33-36 as VLAN 118
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/33
           mode: access
           access: 
-            vlan: 118
-          enabled: true
+            vlan: 117
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/34-37 as VLAN 118
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/34
           mode: access
           access: 
@@ -280,17 +275,17 @@
           mode: access
           access: 
             vlan: 118
-          enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-    - name: Configure G1/0/37-40 as VLAN 119
-      ios_l2_interfaces:
-        config:
+          enabled: true
         - name: GigabitEthernet1/0/37
           mode: access
           access: 
-            vlan: 119
-          enabled: true
+            vlan: 118
+          enabled: true                              
+        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+
+    - name: Configure G1/0/38-41 as VLAN 119
+      ios_l2_interfaces:
+        config:
         - name: GigabitEthernet1/0/38
           mode: access
           access: 
@@ -305,13 +300,18 @@
           mode: access
           access: 
             vlan: 119
+          enabled: true
+        - name: GigabitEthernet1/0/41
+          mode: access
+          access: 
+            vlan: 119
           enabled: true                              
         state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
     
-    - name: Configure G1/0/41 as an 802.1q trunk
+    - name: Configure G1/0/1 as an 802.1q trunk
       ios_l2_interfaces:
         config:
-          - name: GigabitEthernet1/0/41
+          - name: GigabitEthernet1/0/1
             trunk:
               encapsulation: dot1q                          
         state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
