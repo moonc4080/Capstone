@@ -8,7 +8,7 @@
 # main use: ip address on physical interface and virtual, create VlanID then merge
   tasks:  
   - name: Merge provided configuration with device configuration
-    vyos.vyos.vyos_l3_interfaces:
+    vyos_l3_interfaces:
       config:
         - name: eth0
           ipv4:
