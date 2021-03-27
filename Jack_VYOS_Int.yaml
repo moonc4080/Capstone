@@ -8,12 +8,13 @@
 # main use: ip address on physical interface and virtual, create VlanID then merge
   tasks:  
   - name: Merge provided configuration with device configuration
-    vyos_l3_interfaces:
-      config:
-        - name: eth0
-          ipv4:
-          - address: 10.50.50.1 # ipaddress of the "physical" ethernet, randomly made (don't keep)
-        #state: merged # merges this current with new
+  vyos_l3_interfaces:
+    config:
+      - name: eth2
+        ipv4:
+          - address: 192.0.2.10/28
+          - address: 198.51.100.40/27
+    #state: merged # merges this current with new
 
   - name: Creates Static IP's  #Can work on loop once i get a file for it
     vyos_static_route:
