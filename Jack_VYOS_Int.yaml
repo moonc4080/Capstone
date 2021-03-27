@@ -6,7 +6,7 @@
     - vyos.vyos
 
 # main use: ip address on physical interface and virtual, create VlanID then merge
-#  tasks:  
+  tasks:  
 - name: Merge provided configuration with device configuration
   vyos.vyos.vyos_l3_interfaces:
     config:
