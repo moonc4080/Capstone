@@ -1,14 +1,14 @@
 ---
-#- name: NatParty
-#- hosts: localhost # don't i add this into the playbook and not the tasks?
-#  gather_facts: no
-#  collections:
-#    - cisco.ios
+- name: Get Nat
+  hosts: localhost
+  gather_facts: false
+  collections:
+    - cisco.ios
 
+  tasks:
 ## tasks file for nat
-  task:
-  - name: Apply NAT 
-    ios_config:
-      src: home/launchbox/.ansible/host_vars
-    tags:
+- name: Apply NAT Overload
+  ios_config:
+    src: nat-do.j2
+  tags:
     - nat
