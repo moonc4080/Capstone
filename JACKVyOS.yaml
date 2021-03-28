@@ -1,34 +1,28 @@
 ---
 - name: Merge VyOS VM to this config
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   collections:
     - vyos.vyos
 
-# main use: ip address on physical interface and virtual, create VlanID then merge
-  tasks:  
+
+  tasks:
     - name: merges all device configuration with provided configuration
-      vyos_l3_interfaces:
+      vyos.vyos.vyos_l3_interfaces:
         config:
-        - name: eth0
-          ipv4:
-          - address: dhcp #virtual IP address can be called with dhcp
-        - name: eth1
-          #- vlan_id: 100 # sets vlanID for current interface
-          ipv4:
-          - address: 10.50.50.1 # ipaddress of the "physical" ethernet, randomly made (don't keep)
-      state: merged # merges this current with new
-
-    - name: Creates Static IP's  #Can work on loop once i get a file for it
+          - name: eth0
+            ipv4:
+              - address: 10.50.50.1
+        state: merged
+    - name: Creates Static IP's
       vyos_static_route:
-        prefix: 0.0.0.0 # configured ip
-        mask: 0 # mask all unknown network traffic
-        next_hop: 10.123.1.1 # next hop ip address
-
-
-
-        #ansible_connection: network_cli # SSH over CLI connection
-
+        prefix: 10.50.50.5 # configured ip, randomly made
+        mask: 24 # mask 255.255.255.0
+        next_hop: 10.50.50.9 # next hop ip address
+        ansible_connection: network_cli # SSH over CLI connection
+    - name: Creates Static IP's #Can work on loop once i get a file for it
+      vyos_static_route:
+        prefix: 10.50.50.5 # configured ip, randomly made
 
 
 # notes: (will delete later)
@@ -77,3 +71,8 @@
 
 # Task 4: Static IP
 #https://docs.ansible.com/ansible/2.9/modules/vyos_static_route_module.html#vyos-static-route-module
+
+#------------------------
+
+# Task 5: BGP
+# going to attempt to just brute force bgp through commands
