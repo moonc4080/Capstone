@@ -2,8 +2,8 @@
 - name: Get Nat
   hosts: localhost
   gather_facts: false
-  collections:
-    - cisco.ios
+#  collections:
+#    - cisco.ios
 
   tasks:
 ## tasks file for nat
