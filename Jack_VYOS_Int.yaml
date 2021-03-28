@@ -8,7 +8,7 @@
   tasks:
     - name: merges all device configuration with provided configuration
       vyos_l3_interfaces:
-        - name: eth0
+          name: eth0
           ipv4:
             - address: 10.50.50.1
     - name: Creates Static IP's
