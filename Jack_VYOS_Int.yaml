@@ -9,11 +9,9 @@
   tasks:
     - name: merges all device configuration with provided configuration
       vyos_l3_interfaces:
-        config:
-          - name: eth0
-            ipv4:
-              - address: 10.50.50.1
-        state: merged
+        - name: eth0
+          ipv4:
+            - address: 10.50.50.1
     - name: Creates Static IP's
       vyos_static_route:
         prefix: 10.50.50.5 # configured ip, randomly made
