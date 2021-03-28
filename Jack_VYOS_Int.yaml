@@ -8,7 +8,7 @@
 
   tasks:
     - name: merges all device configuration with provided configuration
-      vyos.vyos.vyos_l3_interfaces:
+      vyos_l3_interfaces:
         config:
           - name: eth0
             ipv4:
