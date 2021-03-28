@@ -1,5 +1,5 @@
 ---
-#- name: Merge VyOS VM to this config
+- name: NatParty
 - hosts: localhost # don't i add this into the playbook and not the tasks?
 #  gather_facts: no
 #  collections:
@@ -7,7 +7,7 @@
 
 ## tasks file for nat
   task:
-  - name: Apply NAT Overload
+  - name: Apply NAT 
     cisco.ios.ios_config:
       src: home/launchbox/.ansible/host_vars
     tags:
