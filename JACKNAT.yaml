@@ -1,4 +1,10 @@
 ---
+- name: Merge VyOS VM to this config
+  hosts: localhost # don't i add this into the playbook and not the tasks?
+  gather_facts: no
+  collections:
+    - vyos.vyos
+
 ## tasks file for nat
 - name: Apply NAT Overload
   ios_config:
