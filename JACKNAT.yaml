@@ -2,13 +2,13 @@
 - name: NatParty
 - hosts: localhost # don't i add this into the playbook and not the tasks?
 #  gather_facts: no
-#  collections:
-#    - cisco.ios
+  collections:
+    - cisco.ios
 
 ## tasks file for nat
   task:
   - name: Apply NAT 
-    cisco.ios.ios_config:
+    ios_config:
       src: home/launchbox/.ansible/host_vars
     tags:
     - nat
