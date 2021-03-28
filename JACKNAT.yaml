@@ -1,6 +1,6 @@
 ---
 #- name: Merge VyOS VM to this config
-#  hosts: localhost # don't i add this into the playbook and not the tasks?
+- hosts: localhost # don't i add this into the playbook and not the tasks?
 #  gather_facts: no
 #  collections:
 #    - cisco.ios
