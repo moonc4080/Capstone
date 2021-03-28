@@ -2,6 +2,6 @@
 ## tasks file for nat
 - name: Apply NAT Overload
   ios_config:
-    src: nat-do.j2
+    src: home/launchbox/.ansible/host_vars
   tags:
   - nat
