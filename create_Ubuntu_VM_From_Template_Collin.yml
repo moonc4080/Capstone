@@ -235,7 +235,7 @@
       delegate_to: localhost
       register: deploy
 
-#Infrastrucuture 4
+  #Infrastrucuture 4
     - name: Create Ubuntu Test VM in Inf 4 External Zone - VLAN 115
       vmware_guest:
         hostname: '10.123.100.10'
