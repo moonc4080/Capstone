@@ -9,8 +9,8 @@
   tasks:
     - name: Merge provided configuration with device configuration
       vyos_interfaces:
-        config:
-            name: eth1
+      - config:
+          - name: eth1
             description: Configured by Ansible
             enabled: true
         state: merged
