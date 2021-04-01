@@ -1,5 +1,5 @@
 #Author: Collin Moon
-#Creates a VyOS VM from a template as a test
+#Creates a VyOS VM from a template
 #Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
 
 #Defaults
