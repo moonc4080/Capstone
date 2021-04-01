@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: yes
   collections: 
-  - vyos.vyos.vyos_interfaces:
+  - vyos.vyos.vyos_interfaces
 
   tasks:
     - name: Config interface
