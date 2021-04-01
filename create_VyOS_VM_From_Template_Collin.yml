@@ -1,5 +1,5 @@
 #Author: Collin Moon
-#Creates a VyOS VM from a template as a test
+#Creates a VyOS VM from a template
 #Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
 
 #Defaults
@@ -21,15 +21,70 @@
     - community.vmware
 
   tasks: 
-    - name: Create a virtual machine from a template
+    - name: Create a virtual machine from a template for infrastructure 1
       vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: 'VyOS Infrastructure 1'
-        template: VyOS_Template_Inf_1
+        template: VyOS_Template
         state: poweredon
         wait_for_ip_address: true
+        networks:
+        - name: ISP_PG
+        - name: Inf_1_External_PG
+        - name: Temporary Configuration PG        
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a virtual machine from a template for infrastructure 2
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'VyOS Infrastructure 2'
+        template: VyOS_Template
+        state: poweredon
+        wait_for_ip_address: true
+        networks:
+        - name: ISP_PG
+        - name: Inf_2_External_PG
+        - name: Temporary Configuration PG        
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a virtual machine from a template for infrastructure 3
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'VyOS Infrastructure 3'
+        template: VyOS_Template
+        state: poweredon
+        wait_for_ip_address: true
+        networks:
+        - name: ISP_PG
+        - name: Inf_3_External_PG
+        - name: Temporary Configuration PG        
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a virtual machine from a template for infrastructure 4
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'VyOS Infrastructure 4'
+        template: VyOS_Template
+        state: poweredon
+        wait_for_ip_address: true
+        networks:
+        - name: ISP_PG
+        - name: Inf_4_External_PG
+        - name: Temporary Configuration PG        
       delegate_to: localhost
       register: deploy
