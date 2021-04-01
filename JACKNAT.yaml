@@ -10,7 +10,7 @@
   tasks: 
   - name: Configure descriptions
     vyos_config:
-      timeout: 30
+      #timeout: 30
       lines:
          #- set interfaces ethernet eth0 address dhcp 
         - set interfaces ethernet eth1 description 'OUTSIDE' 
