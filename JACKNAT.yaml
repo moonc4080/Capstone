@@ -11,9 +11,9 @@
       vyos_interfaces:
       - config:
         - name: eth1
-            description: Configured by Ansible
-            enabled: true
-        state: merged
+          description: Configured by Ansible
+          enabled: true
+      - state: merged
 
   # - name: Configure Source NAT for our Inside network
   #   vyos_config:
