@@ -8,15 +8,12 @@
    - vyos.vyos
 
   tasks: 
-  - name: Configure descriptions
-    vyos_config:
-      #timeout: 30
-      lines:
-        #- set interfaces ethernet eth0 address dhcp 
-        - set interface ethernet eth0 description OUTSIDE
-        #- set interfaces ethernet eth0 address '192.168.0.1/24' This address can be set to anything
-        - set interface ethernet eth1 description INSIDE
-      save: yes
+- name: Merge provided configuration with device configuration
+  vyos.vyos.vyos_interfaces:
+    config:
+    - name: 'eth1'
+      description: Configured by Ansible
+      enabled: true
     #ignore_errors: yes
     #delegate_to: localhost
     #register: deploy
