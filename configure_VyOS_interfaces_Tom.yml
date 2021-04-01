@@ -1,6 +1,8 @@
 ---
 - name: Merge provided configuration with device configuration
   vyos.vyos.vyos_interfaces:
+
+  tasks:
     config:
     - name: eth0
       description: Configured by Ansible
