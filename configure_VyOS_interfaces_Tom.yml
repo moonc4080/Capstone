@@ -1,0 +1,14 @@
+---
+- name: Create a Nat Instance
+  hosts: localhost
+  gather_facts: yes
+  collections:
+    - vyos.vyos
+
+  tasks:
+    - name: Parse the configuration
+      vyos_interfaces:
+        running_config:
+          "set interfaces ethernet eth0 address 'dhcp'
+           set interfaces ethernet eth0 description 'Test'"
+        state: parsed
