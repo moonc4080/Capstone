@@ -7,7 +7,7 @@
   collections:
     - vyos.vyos
 
-  tasks: 
+  tasks:
     - name: Merge provided configuration with device configuration
       vyos_interfaces:
         config:
