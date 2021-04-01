@@ -13,7 +13,7 @@
           - name: eth1
             description: Configured by Ansible
             enabled: true
-      state: merged
+        state: merged
 
   # - name: Configure Source NAT for our Inside network
   #   vyos_config:
