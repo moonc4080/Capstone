@@ -1,8 +1,8 @@
 ---
 - name: Merge provided configuration with device configuration
+  hosts: localhost
+  gather_facts: yes
   vyos.vyos.vyos_interfaces:
-
-  tasks:
     config:
     - name: eth0
       description: Configured by Ansible
