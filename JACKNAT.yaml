@@ -5,7 +5,7 @@
   gather_facts: True
   #connection: local
   collections:
-   - vyos.vyos
+    - vyos.vyos
 
   tasks: 
   - name: Merge provided configuration with device configuration
@@ -16,20 +16,20 @@
         enabled: true
       state: merged
 
-  - name: Configure Source NAT for our Inside network
-    vyos_config:
-      lines:
-        - set nat source rule 10 outbound-interface 'eth1' # Basically the exit door    > NAT >O
-        - set nat source rule 10 source address '192.168.0.5/24' # These are the ip's that are pre-NAT, they are going to change to the interface IP
-        - set nat source rule 10 translation address masquerade #  The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface"
-      save: yes
-    delegate_to: localhost
-    register: deploy
+  # - name: Configure Source NAT for our Inside network
+  #   vyos_config:
+  #     lines:
+  #       - set nat source rule 10 outbound-interface 'eth1' # Basically the exit door    > NAT >O
+  #       - set nat source rule 10 source address '192.168.0.5/24' # These are the ip's that are pre-NAT, they are going to change to the interface IP
+  #       - set nat source rule 10 translation address masquerade #  The masquerade target is effectively an alias to say "use whatever IP address is on the outgoing interface"
+  #     save: yes
+  #   delegate_to: localhost
+  #   register: deploy
 
-  - name: Show the Configuration
-    vyos_command:  
-      commands:
-      - show configuration commands
+  # - name: Show the Configuration
+  #   vyos_command:  
+      #commands:
+      #- show configuration commands
 
 
 # how to check? >show nat source translations 
