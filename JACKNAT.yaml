@@ -8,15 +8,15 @@
    - vyos.vyos
 
   tasks: 
-- name: Merge provided configuration with device configuration
-  vyos.vyos.vyos_interfaces:
-    config:
-    - name: 'eth1'
-      description: Configured by Ansible
-      enabled: true
-    #ignore_errors: yes
-    #delegate_to: localhost
-    #register: deploy
+  - name: Merge provided configuration with device configuration
+    vyos.vyos.vyos_interfaces:
+      config:
+      - name: 'eth1'
+        description: Configured by Ansible
+        enabled: true
+      #ignore_errors: yes
+      #delegate_to: localhost
+      #register: deploy
 
   - name: Configure Source NAT for our Inside network
     vyos_config:
