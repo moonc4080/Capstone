@@ -9,11 +9,11 @@
   tasks:
     - name: Merge provided configuration with device configuration
       vyos_interfaces:
-      - config:
+        config:
         - name: eth1
           description: Configured by Ansible
           enabled: true
-      - state: merged
+        state: merged
 
   # - name: Configure Source NAT for our Inside network
   #   vyos_config:
