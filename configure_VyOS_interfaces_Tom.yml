@@ -6,9 +6,9 @@
   - vyos.vyos.vyos_interfaces:
 
   tasks:
-  - name: Config interface
-    config:
-    - name: eth0
-      description: Configured by Ansible
-      enabled: true
-    state: merged
+    - name: Config interface
+      config:
+      - name: eth0
+        description: Configured by Ansible
+        enabled: true
+      state: merged
