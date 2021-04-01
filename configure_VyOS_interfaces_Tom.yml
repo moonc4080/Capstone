@@ -3,10 +3,11 @@
   hosts: localhost
   gather_facts: yes
   collections: 
-    - vyos.vyos.vyos_interfaces
+    - vyos.vyos
 
   tasks:
     - name: Config interface
+      vyos_interfaces:
         config:
         - name: eth0
           description: Configured by Ansible
