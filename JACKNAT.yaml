@@ -13,7 +13,7 @@
         config:
           name: eth1
           description: Configured by Ansible
-         enabled: true
+          enabled: true
       state: merged
 
   # - name: Configure Source NAT for our Inside network
