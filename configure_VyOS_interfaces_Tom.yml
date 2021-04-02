@@ -1,15 +1,25 @@
 ---
+# - name: Merge provided configuration with device configuration
+#   
+#   gather_facts: yes
+#   collections: 
+#     - vyos.vyos
+
+#   tasks:
+#     - name: Config interface
+#       vyos_interfaces:
+#         config:
+#         - name: eth0
+#           description: Configured by Ansible
+#           enabled: true
+#         state: merged
+
 - name: Merge provided configuration with device configuration
   hosts: localhost
-  gather_facts: yes
-  collections: 
-    - vyos.vyos
+  vyos.vyos.vyos_interfaces:
+    config:
+    - name: eth1
+      description: Configured by Ansible
+      enabled: true
 
-  tasks:
-    - name: Config interface
-      vyos_interfaces:
-        config:
-        - name: eth0
-          description: Configured by Ansible
-          enabled: true
-        state: merged
+    state: merged
