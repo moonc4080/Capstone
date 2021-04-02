@@ -1,20 +1,19 @@
 ---
-
 - name: Create a Nat Instance
   hosts: localhost
-  gather_facts: True
+  gather_facts: yes
   #connection: local
   collections:
     - vyos.vyos
 
-  tasks: 
-  - name: Merge provided configuration with device configuration
-    vyos_interfaces:
-      config:
-      - name: eth1
-        description: Configured by Ansible
-        enabled: true
-      state: merged
+  tasks:
+    - name: Merge provided configuration with device configuration
+      vyos_interfaces:
+        config:
+        - name: eth1
+          description: Configured by Ansible
+          enabled: true
+        state: overridden
 
   # - name: Configure Source NAT for our Inside network
   #   vyos_config:
