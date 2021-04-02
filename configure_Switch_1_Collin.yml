@@ -55,7 +55,7 @@
           vlan_id: 109
           state: active
           shutdown: disabled 
-        state: merged
+      state: merged
 
 #switch 1
 
@@ -82,7 +82,7 @@
           access: 
             vlan: 100
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/6-9 as VLAN 101
       ios_l2_interfaces:
@@ -107,7 +107,7 @@
           access: 
             vlan: 101
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/10-13 as VLAN 102
       ios_l2_interfaces:
@@ -132,7 +132,7 @@
           access: 
             vlan: 102
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/14-17 as VLAN 103
       ios_l2_interfaces:
@@ -157,7 +157,7 @@
           access: 
             vlan: 103
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/18-21 as VLAN 104
       ios_l2_interfaces:
@@ -182,7 +182,7 @@
           access: 
             vlan: 104
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/22-25 as VLAN 105
       ios_l2_interfaces:
@@ -207,7 +207,7 @@
           access: 
             vlan: 105
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/26-29 as VLAN 106
       ios_l2_interfaces:
@@ -232,7 +232,7 @@
           access: 
             vlan: 106
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/30-33 as VLAN 107
       ios_l2_interfaces:
@@ -257,7 +257,7 @@
           access: 
             vlan: 107
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
     - name: Configure G1/0/34-37 as VLAN 108
       ios_l2_interfaces:
@@ -282,7 +282,7 @@
           access: 
             vlan: 108
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
      - name: Configure G1/0/38-41 as VLAN 109
       ios_l2_interfaces:
@@ -307,7 +307,7 @@
           access: 
             vlan: 109
           enabled: true                              
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
     
      - name: Configure G1/0/1 as an 802.1q trunk
       ios_l2_interfaces:
@@ -315,7 +315,7 @@
         - name: GigabitEthernet1/0/1
           mode: trunk
             encapsulation: dot1q                          
-        state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+      state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
 
 
 
