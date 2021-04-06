@@ -325,5 +325,5 @@
           - name: GigabitEthernet1/0/1
             mode: trunk
             encapsulation: dot1q
-        #Replaces device configuration of listed l2 interfaces with provided configuration
+        # Replaces device configuration of listed l2 interfaces with provided configuration
         state: replaced
