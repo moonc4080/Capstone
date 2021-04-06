@@ -14,9 +14,9 @@
   tasks:
     - name: Create VLANs 100-109 on Infrastructure 1-2
       ios_vlans:
-      config:
-        - name: Vlan_100
-          vlan_id: 100
-          state: active
-          shutdwon: disabled
-      state: merged
+        config:
+          - name: Vlan_100
+            vlan_id: 100
+            state: active
+            shutdwon: disabled
+        state: merged
