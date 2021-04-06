@@ -5,11 +5,11 @@
 ---
 - name: Configures Cisco Hardware Switches
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   collections:
     - cisco.ios
 
-# switch 1
+  # switch 1
 
   tasks:
     - name: Create VLANs 100-109 on Infrastructure 1-2
@@ -57,7 +57,7 @@
             shutdown: disabled
         state: merged
 
-# switch 1
+    # switch 1
 
     - name: Configure G1/0/2-5 as VLAN 100
       ios_l2_interfaces:
@@ -318,14 +318,11 @@
             enabled: true
         # Replaces device configuration of listed l2 interfaces with provided configuration
         state: replaced
-      
+
     # - name: Configure G1/0/1 as an 802.1q trunk
     #   ios_l2_interfaces:
     #   config:
     #     - name: GigabitEthernet1/0/1
     #       mode: trunk
-    #         encapsulation: dot1q                          
+    #         encapsulation: dot1q
     #   state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
-
-
-
