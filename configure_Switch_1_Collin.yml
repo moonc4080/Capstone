@@ -319,10 +319,11 @@
         # Replaces device configuration of listed l2 interfaces with provided configuration
         state: replaced
 
-    # - name: Configure G1/0/1 as an 802.1q trunk
-    #   ios_l2_interfaces:
-    #   config:
-    #     - name: GigabitEthernet1/0/1
-    #       mode: trunk
-    #         encapsulation: dot1q
-    #   state: replaced #Replaces device configuration of listed l2 interfaces with provided configuration
+    - name: Configure G1/0/1 as an 802.1q trunk
+      ios_l2_interfaces:
+        config:
+          - name: GigabitEthernet1/0/1
+            mode: trunk
+            encapsulation: dot1q
+        #Replaces device configuration of listed l2 interfaces with provided configuration
+        state: replaced
