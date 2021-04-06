@@ -1,0 +1,58 @@
+# Author: Collin Moon
+# Configured the hardware Cisco switches
+# Ansible Docs: https://docs.ansible.com/ansible/latest/collections/cisco/ios/index.html
+
+---
+- name: Configures Cisco Hardware Switches
+  hosts: localhost
+  gather_facts: false
+  collections:
+    - cisco.ios
+
+  # switch 1
+
+  tasks:
+    - name: Create VLANs 100-109 on Infrastructure 1-2
+      ios_vlans:
+        config:
+          - name: Vlan_100
+            vlan_id: 100
+            state: active
+            shutdown: disabled
+          - name: Vlan_101
+            vlan_id: 101
+            state: active
+            shutdown: disabled
+          - name: Vlan_102
+            vlan_id: 102
+            state: active
+            shutdown: disabled
+          - name: Vlan_103
+            vlan_id: 103
+            state: active
+            shutdown: disabled
+          - name: Vlan_104
+            vlan_id: 104
+            state: active
+            shutdown: disabled
+          - name: Vlan_105
+            vlan_id: 105
+            state: active
+            shutdown: disabled
+          - name: Vlan_106
+            vlan_id: 106
+            state: active
+            shutdown: disabled
+          - name: Vlan_107
+            vlan_id: 107
+            state: active
+            shutdown: disabled
+          - name: Vlan_108
+            vlan_id: 108
+            state: active
+            shutdown: disabled
+          - name: Vlan_109
+            vlan_id: 109
+            state: active
+            shutdown: disabled
+        state: merged
