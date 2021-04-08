@@ -4,7 +4,7 @@
 
 ---
 - name: Configures Cisco Hardware Switches
-  hosts: 'Inf 1-2 Hardware Cisco Switches'
+  hosts: 'Inf_1-2_Hardware_Cisco_Switches'
   gather_facts: false
   collections:
     - cisco.ios
