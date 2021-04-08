@@ -8,12 +8,13 @@
   gather_facts: false
   collections:
     - cisco.ios
-
-- name: Configure the Cisco banner
-  ios_banner:
-    banner: login
-    text: |
-      this is my login banner
-      that contains a multiline
-      string
-    state: present
+    
+  tasks:
+    - name: Configure the Cisco banner
+      ios_banner:
+        banner: login
+        text: |
+          this is my login banner
+          that contains a multiline
+          string
+        state: present
