@@ -18,5 +18,5 @@
           - name: Vlan_100
             vlan_id: 100
             state: active
-            shutdwon: disabled
+            shutdown: disabled
         state: merged
