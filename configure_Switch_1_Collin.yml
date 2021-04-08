@@ -4,7 +4,8 @@
 
 ---
 - name: Configures Cisco Hardware Switches
-  hosts: 'Inf_1-2_Hardware_Cisco_Switches'
+  hosts: localhost
+  connection: 172.16.0.10
   gather_facts: false
   collections:
     - cisco.ios
