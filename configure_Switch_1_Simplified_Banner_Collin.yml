@@ -10,7 +10,7 @@
     - cisco.ios
 
 - name: Configure the Cisco banner
-  cisco.ios.ios_banner:
+  ios_banner:
     banner: login
     text: |
       this is my login banner
