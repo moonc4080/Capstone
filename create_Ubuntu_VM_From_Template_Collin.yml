@@ -12,6 +12,7 @@
 #controller_type defaults to ide
 #type defaults to client (CD-ROM type)
 #diskmode defaults to persistant
+#type defaults to dhcp in networking
 
 ---
 - name: Create Ubuntu VMs from Template

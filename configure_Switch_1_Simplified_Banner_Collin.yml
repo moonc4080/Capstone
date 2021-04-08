@@ -1,0 +1,19 @@
+# Author: Collin Moon
+# Configured a banner on the Cisco switches
+# Ansible Docs: https://docs.ansible.com/ansible/latest/collections/cisco/ios/index.html
+
+---
+- name: Configures the Cisco banner
+  hosts: localhost
+  gather_facts: false
+  collections:
+    - cisco.ios
+
+- name: Configure the Cisco banner
+  cisco.ios.ios_banner:
+    banner: login
+    text: |
+      this is my login banner
+      that contains a multiline
+      string
+    state: present
