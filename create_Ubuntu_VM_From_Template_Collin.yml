@@ -34,8 +34,8 @@
         template: Ubuntu_Test_Template
         state: poweredon
         networks:
-        - name: Inf_1_External_PG
           connected: yes
+        - name: Inf_1_External_PG
       delegate_to: localhost
       register: deploy
 
@@ -49,8 +49,8 @@
         template: Ubuntu_Test_Template
         state: poweredon
         networks:
+          connected: yes
         - name: Inf_1_Internal_PG
-          connected: yes        
           ip: 192.168.101.2
           netmask: 255.255.255.0
           gateway: 192.168.101.1
@@ -66,9 +66,9 @@
         name: 'Ubuntu Test Inf 1 Users'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:       
+        networks:
+          connected: yes
         - name: Inf_1_Users_PG
-          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -81,9 +81,9 @@
         name: 'Ubuntu Test Inf 1 Guest'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:      
+        networks:
+          connected: yes
         - name: Inf_1_Guest_PG
-          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -97,13 +97,13 @@
         template: Ubuntu_Webserver_Template
         state: poweredon
         networks:
+          connected: yes
         - name: Inf_1_DMZ_PG
-          connected: yes        
           ip: 192.168.102.2
           netmask: 255.255.255.0
           gateway: 192.168.102.1
       delegate_to: localhost
-      register: deploy  
+      register: deploy
 
   # #Infrastrucuture 2
   #   - name: Create Ubuntu Test VM in Inf 2 External Zone - VLAN 105
