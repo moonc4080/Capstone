@@ -35,6 +35,7 @@
         state: poweredon
         networks:
         - name: Inf_1_External_PG
+          connected: yes
       delegate_to: localhost
       register: deploy
 
@@ -49,6 +50,7 @@
         state: poweredon
         networks:
         - name: Inf_1_Internal_PG
+          connected: yes        
           ip: 192.168.101.2
           netmask: 255.255.255.0
           gateway: 192.168.101.1
@@ -64,8 +66,9 @@
         name: 'Ubuntu Test Inf 1 Users'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:
+        networks:       
         - name: Inf_1_Users_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -78,8 +81,9 @@
         name: 'Ubuntu Test Inf 1 Guest'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:
+        networks:      
         - name: Inf_1_Guest_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -94,6 +98,7 @@
         state: poweredon
         networks:
         - name: Inf_1_DMZ_PG
+          connected: yes        
           ip: 192.168.102.2
           netmask: 255.255.255.0
           gateway: 192.168.102.1
@@ -110,8 +115,9 @@
         name: 'Ubuntu Test Inf 2 External'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:
+        networks:      
         - name: Inf_2_External_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -126,6 +132,7 @@
         state: poweredon
         networks:
         - name: Inf_2_Internal_PG
+          connected: yes        
           ip: 192.168.101.2
           netmask: 255.255.255.0
           gateway: 192.168.101.1        
@@ -141,8 +148,9 @@
         name: 'Ubuntu Test Inf 2 Users'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:
+        networks:    
         - name: Inf_2_Users_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -155,8 +163,9 @@
         name: 'Ubuntu Test Inf 2 Guest'
         template: Ubuntu_Test_Template
         state: poweredon
-        networks:
+        networks:    
         - name: Inf_2_Guest_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -171,6 +180,7 @@
         state: poweredon
         networks:
         - name: Inf_2_DMZ_PG
+          connected: yes        
           ip: 192.168.102.2
           netmask: 255.255.255.0
           gateway: 192.168.102.1        
@@ -189,6 +199,7 @@
         state: poweredon
         networks:
         - name: Inf_3_External_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -203,6 +214,7 @@
         state: poweredon
         networks:
         - name: Inf_3_Internal_PG
+          connected: yes        
           ip: 192.168.101.2
           netmask: 255.255.255.0
           gateway: 192.168.101.1        
@@ -220,6 +232,7 @@
         state: poweredon
         networks:
         - name: Inf_3_Users_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -234,6 +247,7 @@
         state: poweredon
         networks:
         - name: Inf_3_Guest_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -248,6 +262,7 @@
         state: poweredon
         networks:
         - name: Inf_3_DMZ_PG
+          connected: yes        
           ip: 192.168.102.2
           netmask: 255.255.255.0
           gateway: 192.168.102.1        
@@ -266,6 +281,7 @@
         state: poweredon
         networks:
         - name: Inf_4_External_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -280,6 +296,7 @@
         state: poweredon
         networks:
         - name: Inf_4_Internal_PG
+          connected: yes        
           ip: 192.168.101.2
           netmask: 255.255.255.0
           gateway: 192.168.101.1        
@@ -297,6 +314,7 @@
         state: poweredon
         networks:
         - name: Inf_4_Users_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -311,6 +329,7 @@
         state: poweredon
         networks:
         - name: Inf_4_Guest_PG
+          connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -325,6 +344,7 @@
         state: poweredon
         networks:
         - name: Inf_4_DMZ_PG
+          connected: yes        
           ip: 192.168.102.2
           netmask: 255.255.255.0
           gateway: 192.168.102.1        

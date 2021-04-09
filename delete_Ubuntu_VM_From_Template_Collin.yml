@@ -33,8 +33,7 @@
         name: 'Ubuntu Test Inf 1 External'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_1_External_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -47,11 +46,7 @@
         name: 'Ubuntu Test Inf 1 Internal'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_1_Internal_PG
-          ip: 192.168.101.2
-          netmask: 255.255.255.0
-          gateway: 192.168.101.1
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -64,8 +59,7 @@
         name: 'Ubuntu Test Inf 1 Users'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_1_Users_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -78,8 +72,7 @@
         name: 'Ubuntu Test Inf 1 Guest'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_1_Guest_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -92,11 +85,7 @@
         name: 'Ubuntu Webserver Inf 1 DMZ'
         template: Ubuntu_Webserver_Template
         state: absent
-        networks:
-        - name: Inf_1_DMZ_PG
-          ip: 192.168.102.2
-          netmask: 255.255.255.0
-          gateway: 192.168.102.1
+        force: yes
       delegate_to: localhost
       register: deploy  
 
@@ -110,8 +99,7 @@
         name: 'Ubuntu Test Inf 2 External'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_2_External_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -124,11 +112,7 @@
         name: 'Ubuntu Test Inf 2 Internal'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_2_Internal_PG
-          ip: 192.168.101.2
-          netmask: 255.255.255.0
-          gateway: 192.168.101.1        
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -141,8 +125,7 @@
         name: 'Ubuntu Test Inf 2 Users'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_2_Users_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -155,8 +138,7 @@
         name: 'Ubuntu Test Inf 2 Guest'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_2_Guest_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -169,11 +151,7 @@
         name: 'Ubuntu Webserver Inf 2 DMZ'
         template: Ubuntu_Webserver_Template
         state: absent
-        networks:
-        - name: Inf_2_DMZ_PG
-          ip: 192.168.102.2
-          netmask: 255.255.255.0
-          gateway: 192.168.102.1        
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -187,8 +165,7 @@
         name: 'Ubuntu Test Inf 3 External'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_3_External_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -201,11 +178,7 @@
         name: 'Ubuntu Test Inf 3 Internal'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_3_Internal_PG
-          ip: 192.168.101.2
-          netmask: 255.255.255.0
-          gateway: 192.168.101.1        
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -218,8 +191,7 @@
         name: 'Ubuntu Test Inf 3 Users'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_3_Users_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -232,8 +204,7 @@
         name: 'Ubuntu Test Inf 3 Guest'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_3_Guest_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -246,11 +217,7 @@
         name: 'Ubuntu Webserver Inf 3 DMZ'
         template: Ubuntu_Webserver_Template
         state: absent
-        networks:
-        - name: Inf_3_DMZ_PG
-          ip: 192.168.102.2
-          netmask: 255.255.255.0
-          gateway: 192.168.102.1        
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -264,8 +231,7 @@
         name: 'Ubuntu Test Inf 4 External'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_4_External_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -277,12 +243,8 @@
         folder: /Datacenter/vm
         name: 'Ubuntu Test Inf 4 Internal'
         template: Ubuntu_Test_Template
-        state: absent
-        networks:
-        - name: Inf_4_Internal_PG
-          ip: 192.168.101.2
-          netmask: 255.255.255.0
-          gateway: 192.168.101.1        
+        state: absent   
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -295,8 +257,7 @@
         name: 'Ubuntu Test Inf 4 Users'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_4_Users_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -309,8 +270,7 @@
         name: 'Ubuntu Test Inf 4 Guest'
         template: Ubuntu_Test_Template
         state: absent
-        networks:
-        - name: Inf_4_Guest_PG
+        force: yes
       delegate_to: localhost
       register: deploy
 
@@ -323,10 +283,6 @@
         name: 'Ubuntu Webserver Inf 4 DMZ'
         template: Ubuntu_Webserver_Template
         state: absent
-        networks:
-        - name: Inf_4_DMZ_PG
-          ip: 192.168.102.2
-          netmask: 255.255.255.0
-          gateway: 192.168.102.1        
+        force: yes
       delegate_to: localhost
       register: deploy
