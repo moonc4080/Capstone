@@ -34,8 +34,8 @@
         template: Ubuntu_Test_Template
         state: poweredon
         networks:
-          connected: yes
-          name: Inf_1_External_PG
+        - name: Inf_1_External_PG
+          start_connected: yes
       delegate_to: localhost
       register: deploy
 
@@ -49,11 +49,11 @@
         template: Ubuntu_Test_Template
         state: poweredon
         networks:
-          connected: yes
-          name: Inf_1_Internal_PG
+        - name: Inf_1_Internal_PG
           ip: 192.168.101.2
           netmask: 255.255.255.0
           gateway: 192.168.101.1
+          start_connected: yes
       delegate_to: localhost
       register: deploy
 
@@ -67,8 +67,8 @@
         template: Ubuntu_Test_Template
         state: poweredon
         networks:
-          connected: yes
-          name: Inf_1_Users_PG
+        - name: Inf_1_Users_PG
+          start_connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -82,8 +82,8 @@
         template: Ubuntu_Test_Template
         state: poweredon
         networks:
-          connected: yes
-          name: Inf_1_Guest_PG
+        - name: Inf_1_Guest_PG
+          start_connected: yes        
       delegate_to: localhost
       register: deploy
 
@@ -97,11 +97,11 @@
         template: Ubuntu_Webserver_Template
         state: poweredon
         networks:
-          connected: yes
-          name: Inf_1_DMZ_PG
+        - name: Inf_1_DMZ_PG
           ip: 192.168.102.2
           netmask: 255.255.255.0
           gateway: 192.168.102.1
+          start_connected: yes          
       delegate_to: localhost
       register: deploy
 
