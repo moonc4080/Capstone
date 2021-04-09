@@ -1,6 +1,6 @@
 #Author: Collin Moon
-#Creates the two infrastructure vSwitches and ISP vSwitch on the Capstone ESXi server
-#Then creates security zone port groups tagged by VLAN for all infrastrucutres
+#Deletes the two infrastructure vSwitches and ISP vSwitch on the Capstone ESXi server
+#Then deletes security zone port groups tagged by VLAN for all infrastrucutres
 #Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_vswitch_module.html#ansible-collections-community-vmware-vmware-vswitch-module
 #Ansible Docs: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_portgroup_module.html#ansible-collections-community-vmware-vmware-portgroup-module
 
@@ -13,221 +13,246 @@
 #vlan-id defaults to 0
 
 ---
-- name: Create vSwitches and Port Groups
+- name: Delete vSwitches and Port Groups
   hosts: localhost
   gather_facts: no
   collections:
     - community.vmware
 
   tasks:
-    - name: Add Infrastructure 1-2 vSwitch
-      vmware_vswitch:
-        hostname: '10.123.100.10' #vcenter host
-        esxi_hostname: '10.123.100.9' #capstone ESXi host
-        switch: infrastructure_1_2_vSwitch
-        nics: vmnic1
-      delegate_to: localhost
 
-    - name: Add Infrastructure 3-4 vSwitch
-      vmware_vswitch:
-        hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
-        switch: infrastructure_3_4_vSwitch
-        nics: vmnic2
-      delegate_to: localhost
-
-    - name: Add ISP vSwitch
-      vmware_vswitch:
-        hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
-        switch: isp_vSwitch
-        nics: vmnic3
-      delegate_to: localhost
-  
-    - name: Add Infrastructure 1 PG External - VLAN 100
+    - name: Remove Infrastructure 1 PG External - VLAN 100
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_1_External_PG
         vlan_id: 100
+        state: absent
       delegate_to: localhost
 
-    - name: Add Infrastructure 1 PG Internal - VLAN 101
+    - name: Remove Infrastructure 1 PG Internal - VLAN 101
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_1_Internal_PG
         vlan_id: 101
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 1 PG Users - VLAN 102
+    - name: Remove Infrastructure 1 PG Users - VLAN 102
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_1_Users_PG
         vlan_id: 102
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 1 PG Guest - VLAN 103
+    - name: Remove Infrastructure 1 PG Guest - VLAN 103
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_1_Guest_PG
         vlan_id: 103
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 1 PG DMZ - VLAN 104
+    - name: Remove Infrastructure 1 PG DMZ - VLAN 104
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_1_DMZ_PG
         vlan_id: 104
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 2 PG External - VLAN 105
+    - name: Remove Infrastructure 2 PG External - VLAN 105
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_2_External_PG
         vlan_id: 105
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 2 PG Internal - VLAN 106
+    - name: Remove Infrastructure 2 PG Internal - VLAN 106
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_2_Internal_PG
         vlan_id: 106
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 2 PG Users - VLAN 107
+    - name: Remove Infrastructure 2 PG Users - VLAN 107
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_2_Users_PG
         vlan_id: 107
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 2 PG Guest - VLAN 108
+    - name: Remove Infrastructure 2 PG Guest - VLAN 108
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_2_Guest_PG
         vlan_id: 108
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 2 PG DMZ - VLAN 109
+    - name: Remove Infrastructure 2 PG DMZ - VLAN 109
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_1_2_vSwitch
         portgroup: Inf_2_DMZ_PG
         vlan_id: 109
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 3 PG External - VLAN 110
+    - name: Remove Infrastructure 3 PG External - VLAN 110
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_3_External_PG
         vlan_id: 110
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 3 PG Internal - VLAN 111
+    - name: Remove Infrastructure 3 PG Internal - VLAN 111
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_3_Internal_PG
         vlan_id: 111
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 3 PG Users - VLAN 112
+    - name: Remove Infrastructure 3 PG Users - VLAN 112
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_3_Users_PG
         vlan_id: 112
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 3 PG Guest - VLAN 113
+    - name: Remove Infrastructure 3 PG Guest - VLAN 113
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_3_Guest_PG
         vlan_id: 113
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 3 PG DMZ - VLAN 114
+    - name: Remove Infrastructure 3 PG DMZ - VLAN 114
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_3_DMZ_PG
         vlan_id: 114
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 4 PG External - VLAN 115
+    - name: Remove Infrastructure 4 PG External - VLAN 115
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_4_External_PG
         vlan_id: 115
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 4 PG Internal - VLAN 116
+    - name: Remove Infrastructure 4 PG Internal - VLAN 116
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_4_Internal_PG
         vlan_id: 116
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 4 PG Users - VLAN 117
+    - name: Remove Infrastructure 4 PG Users - VLAN 117
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_4_Users_PG
         vlan_id: 117
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 4 PG Guest - VLAN 118
+    - name: Remove Infrastructure 4 PG Guest - VLAN 118
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_4_Guest_PG
         vlan_id: 118
+        state: absent        
       delegate_to: localhost
 
-    - name: Add Infrastructure 4 PG DMZ - VLAN 119
+    - name: Remove Infrastructure 4 PG DMZ - VLAN 119
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: infrastructure_3_4_vSwitch
         portgroup: Inf_4_DMZ_PG
         vlan_id: 119
+        state: absent        
       delegate_to: localhost
 
-    - name: Add ISP PG - VLAN 0
+    - name: Remove ISP PG - VLAN 0
       vmware_portgroup:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         switch: isp_vSwitch
         portgroup: ISP_PG
+        state: absent        
+      delegate_to: localhost
+
+    - name: Remove Infrastructure 1-2 vSwitch
+      vmware_vswitch:
+        hostname: '10.123.100.10' #vcenter host
+        esxi_hostname: '10.123.100.9' #capstone ESXi host
+        switch: infrastructure_1_2_vSwitch
+        nics: vmnic1
+        state: absent        
+      delegate_to: localhost
+
+    - name: Remove Infrastructure 3-4 vSwitch
+      vmware_vswitch:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: infrastructure_3_4_vSwitch
+        nics: vmnic2
+        state: absent        
+      delegate_to: localhost
+
+    - name: Remove ISP vSwitch
+      vmware_vswitch:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        switch: isp_vSwitch
+        nics: vmnic3
+        state: absent        
       delegate_to: localhost
