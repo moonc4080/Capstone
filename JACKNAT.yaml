@@ -1,8 +1,11 @@
 ---
 - name: Create a Nat Instance
   hosts: all
-  gather_facts: yes
+  gather_facts: no
   #connection: local
+  ansible_connection: ansible.netcommon.network_cli
+  ansible_network_os: vyos.vyos.vyos
+  ansible_user: vyos
   collections:
     - vyos.vyos
 
@@ -14,7 +17,6 @@
           description: Configured by Ansible
           enabled: true
         state: overridden
-
   # - name: Configure Source NAT for our Inside network
   #   vyos_config:
   #     lines:
@@ -24,14 +26,10 @@
   #     save: yes
   #   delegate_to: localhost
   #   register: deploy
-
   # - name: Show the Configuration
   #   vyos_command:  
       #commands:
       #- show configuration commands
-
-
 # how to check? >show nat source translations 
-
 # https://github.com/rcalvaga/vyos-ansible/blob/master/vyos-cfme-emb-ansible-launch-instance-and-configure-nat-gateway.yml
 # https://support.vyos.io/en/kb/articles/nat-basics-2
