@@ -5,9 +5,6 @@
   # connection: local
   collections:
     - vyos.vyos
-    - name: https://github.com/organization/repo_name.git
-      type: git
-      version: devel
 
   tasks:
     - name: Merge provided configuration with device configuration
