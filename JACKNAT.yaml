@@ -1,6 +1,6 @@
 ---
 - name: Create a Nat Instance
-  hosts: local
+  hosts: VyOS_Edge_Router_Inf_1
   gather_facts: false
   # connection: local
   collections:
