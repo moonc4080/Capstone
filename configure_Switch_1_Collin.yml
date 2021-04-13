@@ -4,7 +4,7 @@
 
 ---
 - name: Configures Cisco Hardware Switches
-  hosts: "Switch1.target.com"
+  hosts: "Cisco_Switch_1"
   gather_facts: no
   collections:
     - cisco.ios
