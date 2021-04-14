@@ -1,5 +1,5 @@
-#Author: Collin Moon and Tom Simono
-#Powers off the VyOS VM for each infrastructure and then creates a snapshot of the VyOS VM
+#Author: Collin Moon
+#Powers off the VyOS DHCP server and rolls it back to the snapshot with no DHCP leases but with DHCP configured.
 #Ansible Docs vmware_guest module: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
 #Ansible Docs vmware_guest_snapshot module:  https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_snapshot_module.html#ansible-collections-community-vmware-vmware-guest-snapshot-module
 
@@ -17,87 +17,39 @@
 #diskmode defaults to persistant
 
 ---
-- name: Powers OFF VyOS Edge Router VMs
+- name: Powers OFF VyOS DHCP server and rolls back to snapshot before DHCP leases exist
   hosts: localhost
   gather_facts: no
   collections:
     - community.vmware
 
   tasks: 
-    - name: Power OFF VyOS VM for Infrastructure 1
+    - name: Power OFF VyOS DHCP Server
       vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
-        name: VyOS Infrastructure 1
+        name: VyOS_DHCP_Server
         state: poweredoff
       delegate_to: localhost
       
-    - name: Power OFF VyOS VM for Infrastructure 2
+
+    #VMs is powered down and now reverting to original snapshot
+
+    - name: Roll back DHCP server to no leases snapshot
+      vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS_DHCP_Server
+        state: revert
+        snapshot_name: DHCP_No_Leases
+      delegate_to: localhost
+
+    #VM is rolled back, power back on VM
+    - name: Power ON VyOS DHCP Server
       vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
-        name: VyOS Infrastructure 2
-        state: poweredoff
-      delegate_to: localhost
-
-    - name: Power OFF VyOS VM for Infrastructure 3
-      vmware_guest:
-        hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
-        name: VyOS Infrastructure 3
-        state: poweredoff
-      delegate_to: localhost
-
-    - name: Power OFF VyOS VM for Infrastructure 4
-      vmware_guest:
-        hostname: '10.123.100.10'
-        esxi_hostname: '10.123.100.9'
-        name: VyOS Infrastructure 4
-        state: poweredoff
-      delegate_to: localhost
-
-    #VMs are powered down and begining snapshot tasks
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 1
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 1
-        state: present
-        snapshot_name: VyOS 1 Snap
-        description: Infrastructure 1
-      delegate_to: localhost
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 2
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 2
-        state: present
-        snapshot_name: VyOS 2 Snap
-        description: Infrastructure 2
-      delegate_to: localhost
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 3
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 3
-        state: present
-        snapshot_name: VyOS 3 Snap
-        description: Infrastructure 3
-      delegate_to: localhost
-
-    - name: Create a VyOS VM Snapshot for Infrastructure 4
-      vmware_guest_snapshot:
-        hostname: '10.123.100.10'
-        datacenter: Datacenter
-        folder: /Datacenter/vm
-        name: VyOS Infrastructure 4
-        state: present
-        snapshot_name: VyOS 4 Snap
-        description: Infrastructure 4
+        name: VyOS_DHCP_Server
+        state: poweredon
       delegate_to: localhost
