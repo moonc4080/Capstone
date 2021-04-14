@@ -1,6 +1,5 @@
 ---
 - name: Create a Nat Instance
-  hosts: 172.16.0.254
   gather_facts: false
   # connection: local
   collections:

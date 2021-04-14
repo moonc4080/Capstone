@@ -21,6 +21,8 @@
     - community.vmware
 
   tasks: 
+
+    #Power off and delete all VyOS edge routers
     - name: Delete a virtual machine from a template for infrastructure 1
       vmware_guest:
         hostname: '10.123.100.10'
@@ -28,14 +30,8 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: 'VyOS Infrastructure 1'
-        template: VyOS_Template
         state: absent
-        force: yes
-        #wait_for_ip_address: true
-        networks:
-        - name: ISP_PG
-        - name: Inf_1_External_PG
-        - name: Temporary Configuration PG        
+        force: yes      
       delegate_to: localhost
       register: deploy
 
@@ -46,14 +42,8 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: 'VyOS Infrastructure 2'
-        template: VyOS_Template
         state: absent
-        force: yes
-        #wait_for_ip_address: true
-        networks:
-        - name: ISP_PG
-        - name: Inf_2_External_PG
-        - name: Temporary Configuration PG        
+        force: yes     
       delegate_to: localhost
       register: deploy
 
@@ -64,14 +54,8 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: 'VyOS Infrastructure 3'
-        template: VyOS_Template
         state: absent
-        force: yes
-        #wait_for_ip_address: true
-        networks:
-        - name: ISP_PG
-        - name: Inf_3_External_PG
-        - name: Temporary Configuration PG        
+        force: yes     
       delegate_to: localhost
       register: deploy
 
@@ -82,13 +66,36 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: 'VyOS Infrastructure 4'
-        template: VyOS_Template
         state: absent
-        force: yes
-        #wait_for_ip_address: true
-        networks:
-        - name: ISP_PG
-        - name: Inf_4_External_PG
-        - name: Temporary Configuration PG        
+        force: yes      
       delegate_to: localhost
       register: deploy
+
+    #Begin rollback of VyOS DHCP server to the snapshot before DHCP leases were offered
+    - name: Power OFF VyOS DHCP Server
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        name: VyOS_DHCP_Server
+        state: poweredoff
+      delegate_to: localhost
+      
+    #DHCP server is powered down and now reverting to original snapshot
+    - name: Roll back DHCP server to no leases snapshot
+      vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS_DHCP_Server
+        state: revert
+        snapshot_name: DHCP_No_Leases
+      delegate_to: localhost
+
+    #DHCP server is rolled back, power back on VM
+    - name: Power ON VyOS DHCP Server
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        name: VyOS_DHCP_Server
+        state: poweredon
+      delegate_to: localhost

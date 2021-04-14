@@ -1,0 +1,56 @@
+#Author: Collin Moon
+#Powers off the VyOS DHCP server and rolls it back to the snapshot with no DHCP leases but with DHCP configured.
+#Ansible Docs vmware_guest module: https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html#ansible-collections-community-vmware-vmware-guest-module
+#Ansible Docs vmware_guest_snapshot module:  https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_snapshot_module.html#ansible-collections-community-vmware-vmware-guest-snapshot-module
+
+
+#Defaults for VM Creation
+
+#port defaults to 443
+#username defaults to VMWARE_USER env var from AWX
+#password defaults to VMWARE_PASSWORD env var from AWX
+#valid certs defaults to yes for SSL forced connections
+#power_on_after_clone defaults to yes
+#state defaults to present
+#controller_type defaults to ide
+#type defaults to client (CD-ROM type)
+#diskmode defaults to persistant
+
+---
+- name: Powers OFF VyOS DHCP server and rolls back to snapshot before DHCP leases exist
+  hosts: localhost
+  gather_facts: no
+  collections:
+    - community.vmware
+
+  tasks: 
+  
+    #Powers down DHCP server to prep rollback
+    - name: Power OFF VyOS DHCP Server
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        name: VyOS_DHCP_Server
+        state: poweredoff
+      delegate_to: localhost
+      
+
+    #DHCP server is powered down and now reverting to original snapshot
+    - name: Roll back DHCP server to no leases snapshot
+      vmware_guest_snapshot:
+        hostname: '10.123.100.10'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: VyOS_DHCP_Server
+        state: revert
+        snapshot_name: DHCP_No_Leases
+      delegate_to: localhost
+
+    #DHCP server is rolled back, power back on VM
+    - name: Power ON VyOS DHCP Server
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        name: VyOS_DHCP_Server
+        state: poweredon
+      delegate_to: localhost
