@@ -24,6 +24,8 @@
     - community.vmware
 
   tasks: 
+  
+    #Powers down DHCP server to prep rollback
     - name: Power OFF VyOS DHCP Server
       vmware_guest:
         hostname: '10.123.100.10'
@@ -33,8 +35,7 @@
       delegate_to: localhost
       
 
-    #VMs is powered down and now reverting to original snapshot
-
+    #DHCP server is powered down and now reverting to original snapshot
     - name: Roll back DHCP server to no leases snapshot
       vmware_guest_snapshot:
         hostname: '10.123.100.10'
@@ -45,7 +46,7 @@
         snapshot_name: DHCP_No_Leases
       delegate_to: localhost
 
-    #VM is rolled back, power back on VM
+    #DHCP server is rolled back, power back on VM
     - name: Power ON VyOS DHCP Server
       vmware_guest:
         hostname: '10.123.100.10'
