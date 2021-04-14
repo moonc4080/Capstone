@@ -2,6 +2,7 @@
 - name: Create a Nat Instance
   gather_facts: false
   # connection: local
+  host: 172.16.0.254
   collections:
     - vyos.vyos
 
