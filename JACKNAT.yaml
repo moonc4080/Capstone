@@ -1,8 +1,7 @@
 ---
 - name: Create a Nat Instance
   gather_facts: false
-  hosts: 
-    - { VyOS Edge Routers }
+  hosts: ansible-host
   # connection: local
   collections:
     - vyos.vyos
