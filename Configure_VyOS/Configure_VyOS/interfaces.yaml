@@ -1,0 +1,13 @@
+interfaces:
+  - ios_if: "GigabitEthernet0/1"
+    desc: "To cisco-02"
+    enabled: true
+    ipv4: "dhcp"
+    nat:
+      role: inside
+  - ios_if: "GigabitEthernet0/2"
+    desc: "To the Internet"
+    enabled: true
+    ipv4: "dhcp" #idk which is which
+    nat:
+      role: outside
