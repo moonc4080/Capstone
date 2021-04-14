@@ -4,16 +4,14 @@
 
 ---
 - name: Configures Cisco Hardware Switches
-  hosts: "Cisco_Switch_1"
-  gather_facts: no
-  collections:
-    - cisco.ios
+  hosts: Cisco_Switch_1
+  gather_facts: false
 
   # switch 1
 
   tasks:
     - name: Create VLANs 100-109 on Infrastructure 1-2
-      ios_vlans:
+      cisco.ios.ios_vlans:
         config:
           - name: Vlan_100
             vlan_id: 100
