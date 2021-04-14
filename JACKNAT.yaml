@@ -1,7 +1,7 @@
 ---
 - name: Create a Nat Instance
   gather_facts: false
-  hosts: ansible-host
+  hosts: 172.16.0.254/24
   # connection: local
   collections:
     - vyos.vyos
