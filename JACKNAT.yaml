@@ -2,7 +2,7 @@
 - name: Create a Nat Instance
   gather_facts: false
   hosts: 
-    - {{ VyOS Edge Routers }}
+    - { VyOS Edge Routers }
   # connection: local
   collections:
     - vyos.vyos
