@@ -8,7 +8,6 @@
 
   tasks:
     - name: Merge provided configuration with device configuration
-      hosts: 172.16.0.254
       vyos_interfaces:
         config:
           - name: eth1
