@@ -1,18 +1,22 @@
+# Created by Jack James
+# sets interfaces and NAT
 ---
-- name: Create a Nat Instance
+- name: Create ethernet and IP scheme
   gather_facts: false
   hosts: all
   # connection: local
 
-
   tasks:
-    - name: Merge provided configuration with device configuration
+    - name: Parse the configuration.
       vyos.vyos.vyos_interfaces:
-        config:
-          - name: eth1
-            description: Configured by Ansible
-            enabled: true
-        state: overridden
+        running_config:
+          "set interfaces ethernet eth0 address 'dhcp'
+          set interfaces ethernet eth1 address '10.0.0.1/28'
+          set interfaces ethernet eth1 description 'static internal IP to shorewall'
+          set interfaces ethernet eth2 description 'Configured from temp'"
+        state: parsed
+
+# set interfaces ethernet eth1 vif 200 description 'VIF - 200'
 
 # - name: Configure Source NAT for our Inside network
 #   vyos_config:
