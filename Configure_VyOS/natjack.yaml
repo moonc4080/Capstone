@@ -7,29 +7,15 @@
   # connection: local
 
   tasks:
-    - name: Merge provided configuration with device configuration
-      vyos.vyos.vyos_interfaces:
-        config:
-          - name: eth0
-            description: AutoConfigured - Connects to ISP
-            enabled: true
-          - name: eth1
-            description: AutoConfigured - Connects to internal
-            enabled: true
-          - name: eth2
-            description: TempConfig - Connects to internal
-            enabled: true
-            state: overridden
-          
           - name: Set eth0 IPv4 address
             vyos.vyos.vyos_l3_interface:
-              name: eth0
-              ipv4: dhcp
+                    name: eth0
+                    ipv4: dhcp
           
           - name: Set eth1 interface
             vyos.vyos.vyos_l3_interface:
-              name: eth1
-              ipv4: 10.0.0.1/28
+                    name: eth1
+                    ipv4: 10.0.0.1/28
 
 # set interfaces ethernet eth1 vif 200 description 'VIF - 200'
 
