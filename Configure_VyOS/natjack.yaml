@@ -11,12 +11,10 @@
             vyos.vyos.vyos_l3_interface:
                     name: eth0
                     ipv4: dhcp
-          
           - name: Set eth1 interface
             vyos.vyos.vyos_l3_interface:
                     name: eth1
                     ipv4: 10.0.0.1/28
-    
 - name: Create ethernet description
   gather_facts: false
   hosts: all
@@ -25,34 +23,43 @@
   tasks:
           - name: Set eth0 description
             vyos.vyos.vyos_interfaces:
-              config:
-              - name: eth0
-                description: Route to isp
-                enabled: true
-          
-          - name: Set eth1 description and vlan
-            vyos.vyos.vyos_interfaces:
-              config:
-              - name: eth1
-                description: internal path to shorewall
-                enabled: true
-                vifs:
-                - vlan_id: 100
-                  description: vlan of external security zone
+                    config:
+                    - name: eth0
+                      description: Route to isp
+                      enabled: true
 
+          - name: Set eth1 description
+            vyos.vyos.vyos_interfaces:
+                    config:
+                    - name: eth1
+                      description: internal route to shorewall
+                      enabled: true
 - name: Create NAT
   gather_facts: false
   hosts: all
   # connection: local
 
   tasks:
-    - name: Configure Source NAT for our Inside network
-      vyos.vyos.vyos_config:
-        lines:
-          - set nat source rule 10 outbound-interface 'eth0' # Basically the exit door > NAT >O
-          - set nat source rule 10 source address '192.168.0.0/24'
-          - set nat source rule 10 translation address masquerade
-      
+          - name: Configure Source NAT for our Inside network
+            vyos.vyos.vyos_config:
+              lines:
+              - set nat source rule 10 outbound-interface 'eth0' # Basically the exit door > NAT >O
+              - set nat source rule 10 source address '192.168.0.0/24'
+              - set nat source rule 10 translation address masquerade  
+
+- name: Create VLANS
+  gather_facts: false
+  hosts: all
+  # connection: local
+
+  tasks:
+          - name: Configure VLANS
+            vyos.vyos.vyos_vlan:
+              vlan_id: 100
+              name: vlan-100
+              interfaces: eth1
+              state: present
+
 #    - name: Show the Configuration
 #      vyos_command:
 #      commands:
@@ -60,4 +67,3 @@
 # how to check? >show nat source translations
 # https://github.com/rcalvaga/vyos-ansible/blob/master/vyos-cfme-emb-ansible-launch-instance-and-configure-nat-gateway.yml
 # https://support.vyos.io/en/kb/articles/nat-basics-2
-
