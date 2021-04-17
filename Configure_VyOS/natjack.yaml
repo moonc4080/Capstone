@@ -50,7 +50,7 @@
       vyos.vyos.vyos_config:
         lines:
           - set nat source rule 10 outbound-interface 'eth0' # Basically the exit door > NAT >O
-          - set nat source rule 10 source address '0.0.0.0/24'
+          - set nat source rule 10 source address '192.168.0.0/24'
           - set nat source rule 10 translation address masquerade
       
 #    - name: Show the Configuration
