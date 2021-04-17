@@ -16,22 +16,47 @@
             vyos.vyos.vyos_l3_interface:
                     name: eth1
                     ipv4: 10.0.0.1/28
+    
+- name: Create ethernet description
+  gather_facts: false
+  hosts: all
+  # connection: local
 
-# set interfaces ethernet eth1 vif 200 description 'VIF - 200'
+  tasks:
+          - name: Set eth0 description
+            vyos.vyos.vyos_interfaces:
+              config:
+              - name: eth0
+                description: Route to isp
+                enabled: true
+          
+          - name: Set eth1 description and vlan
+            vyos.vyos.vyos_interfaces:
+              config:
+              - name: eth1
+                description: internal path to shorewall
+                enabled: true
+                vifs:
+                - vlan_id: 100
+                  description: vlan of external security zone
 
-# - name: Configure Source NAT for our Inside network
-#   vyos_config:
-#     lines:
-#       - set nat source rule 10 outbound-interface 'eth1' # Basically the exit door    > NAT >O
-#       - set nat source rule 10 source address '192.168.0.5/24'
-#       - set nat source rule 10 translation address masquerade
-#     save: yes
-#   delegate_to: localhost
-#   register: deploy
-# - name: Show the Configuration
-#   vyos_command:
-# commands:
-# - show configuration commands
+- name: Create NAT
+  gather_facts: false
+  hosts: all
+  # connection: local
+
+  tasks:
+    - name: Configure Source NAT for our Inside network
+      vyos.vyos.vyos_config:
+        lines:
+          - set nat source rule 10 outbound-interface 'eth0' # Basically the exit door > NAT >O
+          - set nat source rule 10 source address '192.168.101.0/24'
+          - set nat source rule 10 translation address masquerade
+      
+#    - name: Show the Configuration
+#      vyos_command:
+#      commands:
+#      - show configuration commands
 # how to check? >show nat source translations
 # https://github.com/rcalvaga/vyos-ansible/blob/master/vyos-cfme-emb-ansible-launch-instance-and-configure-nat-gateway.yml
 # https://support.vyos.io/en/kb/articles/nat-basics-2
