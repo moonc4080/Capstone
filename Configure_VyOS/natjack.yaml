@@ -64,18 +64,15 @@
 - name: Create BGP
   gather_facts: false
   hosts: all
+  become_method: configure
   # connection: local
 
   tasks:
           - name: Configure static bgp between ISP
             vyos.vyos.vyos_config:
-            lines:
-            - set protocols bgp local-as 65535
-            - set protocols bgp neighbor 67.127.16.1 remote-as 65535
-            - set protocols bgp neighbor 67.127.16.1 description BGP to ISP
-
-
-
+              lines:
+              - set protocols bgp 65535
+              - set protocols bgp 65535 neighbor 67.127.16.1 remote-as 65535
 #    - name: Show the Configuration
 #      vyos_command:
 #      commands:
