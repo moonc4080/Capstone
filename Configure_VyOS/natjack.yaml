@@ -11,7 +11,7 @@
             vyos.vyos.vyos_l3_interface:
                     name: eth0
                     ipv4: dhcp
-          - name: Set eth1 interface
+          - name: Set eth1 IPv4 address
             vyos.vyos.vyos_l3_interface:
                     name: eth1
                     ipv4: 10.0.0.1/28
@@ -59,6 +59,22 @@
               name: vlan-100
               interfaces: eth1
               state: present
+
+
+- name: Create BGP
+  gather_facts: false
+  hosts: all
+  # connection: local
+
+  tasks:
+          - name: Configure static bgp between ISP
+            vyos.vyos.vyos_config:
+            lines:
+            - set protocols bgp local-as 65535
+            - set protocols bgp neighbor 67.127.16.1 remote-as 65535
+            - set protocols bgp neighbor 67.127.16.1 description BGP to ISP
+
+
 
 #    - name: Show the Configuration
 #      vyos_command:
