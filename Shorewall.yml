@@ -28,149 +28,355 @@ shorewall_external_int: eth0
 
 # Defines local interface
 shorewall_internal_int: eth1
+shorewall_DMZ_int: eth2
+shorewall_guest_int: eth3
+shorewall_users_int: eth4
 
 shorewall_interfaces:
-  - name: "{{ shorewall_external_int }}"
+  - name: shorewall_external_int
     zone: net
     options:
-      - dhcp
       - logmartians
       - nosmurfs
       - sourceroute=0
       - tcpflags
-  - name: "{{ shorewall_internal_int }}"
-    zone: loc
+  - name: shorewall_internal_int
+    zone: internal
     options:
+      - dhcp
       - logmartians
       - nosmurfs
       - routefilter=2
       - tcpflags
-  - name: "{{ Shorwewall_DMZ_int }}"
+  - name: shorwewall_DMZ_int
     zone: dmz
     options:
-      
+      - dhcp
+      - logmartians
+      - nosmurfs
+      - routefilter=2
+      - tcpflags
+  - name: shorewall_guest_int
+    zone: guest
+    options:
+      - dhcp
+      - logmartians
+      - nosmurfs
+      - routefilter=2
+  - name: shorewall_users_int
+    zone: users
+    options:
+      - dhcp
+      - logmartians
+      - nosmurfs
+      - routefilter=2
 
 shorewall_main_configuration: true
 
-# shorewall_masquerade_info:
-#   enabled: true
-#   interface: "{{ shorewall_external_int }}"
-#   sources:
-#     - 10.0.0.0/8
-#     - 169.254.0.0/16
-#     - 172.16.0.0/16
-#     - 192.168.0.0/16
-#
-# it's possible to create multiples masquerade rules this way
-#
-# shorewall_masquerade_info:
-#   enabled: true
-#   rules:
-#     - interface: "{{ shorewall_external_int }}":0
-#       source:
-#         - 192.168.122.0/24
-#       address: 10.123.123.250
-#     - interface: "{{ shorewall_external_int }}"
-#       sources:
-#         - 10.0.0.0/8
-#         - 169.254.0.0/16
-#         - 172.16.0.0/16
-#         - 192.168.0.0/16
+shorewall_policies:
 
-# shorewall_policies:
-#   - source: $FW
-#     dest: loc
-#     policy: ACCEPT
-#     log_level:
-#     limit_burst:
-#   - source: $FW
-#     dest: net
-#     policy: ACCEPT
-#     log_level:
-#     limit_burst:
-#   - source: loc
-#     dest: $FW
-#     policy: ACCEPT
-#     log_level:
-#     limit_burst:
-#   - source: loc
-#     dest: net
-#     policy: ACCEPT
-#     log_level:
-#     limit_burst:
-#   - source: net
-#     dest: all
-#     policy: DROP
-#     log_level: info
-#     limit_burst:
-#   - source: all
-#     dest: all
-#     policy: REJECT
-#     log_level: info
-#     limit_burst: ""
+  - source: $FW
+    dest: net
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: users
+    dest: net
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: users
+    dest: DMZ
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: users
+    dest: $FW
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: internal
+    dest: net
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: internal
+    dest: users
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: internal
+    dest: guest
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: guest
+    dest: net
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: net
+    dest: DMZ
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: DMZ
+    dest: net
+    policy: ACCEPT
+    log_level:
+    limit_burst:
+  - source: DMZ
+    dest: all
+    policy: DROP
+    log_level:
+    limit_burst:
+  - source: guest
+    dest: DMZ
+    policy: drop
+    log_level:
+    limit_burst:
+  - source: guest
+    dest: internal
+    policy: drop
+    log_level:
+    limit_burst:
+  - source: guest
+    dest: users
+    policy: drop
+    log_level:
+    limit_burst:
+  - source: guest
+    dest: all
+    policy: drop
+    log_level:
+    limit_burst:
+  - source: net
+    dest: all
+    policy: DROP
+    log_level: info
+    limit_burst:
+  - source: all
+    dest: all
+    policy: REJECT
+    log_level: info
+    limit_burst: ""
 
-# shorewall_rules:
-#   - section: NEW
-#     rules:
-      # - source: $FW
-      #   dest: net
-      #   action: ACCEPT
-      #   proto: tcp
-      #   dest_ports:
-      #     - 53
-      # - source: $FW
-      #   dest: net
-      #   action: ACCEPT
-      #   proto: udp
-      #   dest_ports:
-      #     - 53
-#       - source: loc
-#         dest: $FW
-#         action: ACCEPT
-#         proto: tcp
-#         dest_ports:
-#           - 22
-#           - 80
-#           - 443
-#       - source: net
-#         dest: $FW
-#         action: ACCEPT
-#         proto: tcp
-#         dest_ports:
-#           - 22
-#       - source: net
-#         dest: loc:192.168.202.200
-#         action: DNAT
-#         proto: tcp
-#         dest_ports:
-#           - 80
-#           - 443
-#       - source: DMZ
-#         dest: [address of Webserver]
-#         action: ACCEPT
-#         proto: tcp
-#         dest_ports: 
-#           -80
-#           -443
-# shorewall_startup: true
+shorewall_rules:
+  - section: NEW
+    rules:
+    # management of pings between $FW and network
+      - source: net
+        dest: $FW
+        action: Accept
+        proto: icmp
+        dest_port:
+          - 1
+      - source: $FW
+        dest: internal
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: $FW
+        dest: guest
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: $FW
+        dest: DMZ
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: $FW
+        dest: net
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: users
+        dest: $FW
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: DMZ
+        dest: $FW
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: internal
+        dest: $FW
+        action: ACCEPT
+        proto: icmp
+        dest_port:
+          - 1
+      - source: guest
+        dest: $FW
+        action: deny
+        proto: icmp
+        dest_port:
+          - 1
+      - source: any
+        dest: any
+        action: DENY
+        proto: icmp
+        dest_port:
+          - 1
+      # management of internal systems to rest of network    
+      - source: internal
+        dest: $FW
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 67
+      - source: internal
+        dest: user
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 25
+      - source: internal
+        dest: net
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 53
+      - source: internal
+        dest: net
+        action: ACCEPT
+        proto: udp
+        dest_ports:
+          - 53
+      - source: 10.0.0.1
+        dest: internal
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 123
+      - source: $FW
+        dest: internal
+        action: ACCEPT
+        proto: tpc
+        dest_ports:
+          - 67
+      - source: net
+        dest: internal
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 80
+          - 443
+      # management of users to network
+      - source: user
+        dest: internal
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 80
+          - 443
+      - source: user
+        dest: internal
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 3306
+      - source: user
+        dest:   internal
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 20
+          - 21
+      - source: users
+        dest: $FW
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 22
+          - 80
+          - 443
+      - source: users
+        dest: net
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          - 80
+          - 443
+      - source: 10.0.0.1
+        dest: users
+        action: ACCEPT
+        proto: tcp
+        dest_ports:
+          -123
+      # management of DMZ to network
+      - source: DMZ
+        dest: net
+        action: ACCEPT
+        proto: tcp
+        dest_ports: 
+          - 80
+          - 443
+      - source: net
+        dest: DMZ
+        action: ACCEPT
+        proto: tcp
+        dest_port:
+          - 80
+          - 443
+      - source: 10.0.0.1
+        dest: DMZ
+        action: ACCEPT
+        proto: tcp
+        dest_port: 
+          - 123
+    # management of guest network
+      - source: guest
+        dest: net
+        action: ACCEPT
+        proto: tcp
+        dest_port:
+          - 25
+          - 80
+          - 123
+          - 443
 
-# shorewall_immediate_restart: false
+shorewall_startup: true
 
-# shorewall_version: 4
+shorewall_immediate_restart: false
 
-# shorewall_zones:
-#   - name: fw
-#     in_options:
-#     options:
-#     out_options:
-#     type: firewall
-#   - name: net
-#     in_options:
-#     options:
-#     out_options:
-#     type: ipv4
-#   - name: loc
-#     in_options:
-#     options:
-#     out_options:
-#     type: ipv4
+shorewall_version: 4
+
+shorewall_zones:
+  - name: $FW
+    in_options:
+    options:
+    out_options:
+    type: firewall
+  - name: net
+    in_options:
+    options:
+    out_options:
+    type: ipv4
+  - name: internal
+    in_options:
+    options:
+    out_options:
+    type: ipv4
+  - name: DMZ
+    in_optiions: 
+    options:
+    out_options:
+    tpye: ipv4
+  - name: guest
+    in_options:
+    options:
+    out_options:
+    type: ipv4
+  - name: users
+    in_options:
+    options:
+    out_options:
+    type: ipv4
