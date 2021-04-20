@@ -113,7 +113,7 @@
               lines:
               - set protocols bgp 65535
               - set protocols bgp 65535 neighbor 67.127.16.1 remote-as 6
-              - set protocols bgp neighbor 67.127.16.1 update-source eth0
+              - set protocols bgp 65535 neighbor 67.127.16.1 update-source eth0
               # set protocols bgp 65535 parameters router-id '10.10.10.10'
               - set protocols bgp 65535 address-family ipv4-unicast network '10.0.0.0/28'
               - set protocols bgp 65535 parameters router-id '4.4.4.4'
