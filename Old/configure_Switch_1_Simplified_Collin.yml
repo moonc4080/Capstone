@@ -4,7 +4,7 @@
 
 ---
 - name: Configures Cisco Hardware Switches
-  hosts: localhost
+  hosts: Cisco_Switch_1
   gather_facts: false
   collections:
     - cisco.ios
