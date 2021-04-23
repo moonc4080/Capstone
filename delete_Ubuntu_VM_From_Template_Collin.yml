@@ -89,200 +89,200 @@
       delegate_to: localhost
       register: deploy  
 
-  # #Infrastrucuture 2
-  #   - name: Delete Ubuntu Test VM in Inf 2 External Zone - VLAN 105
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 2 External'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+  #Infrastrucuture 2
+    - name: Delete Ubuntu Test VM in Inf 2 External Zone - VLAN 105
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 2 External'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 2 Internal Zone - VLAN 106
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 2 Internal'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 2 Internal Zone - VLAN 106
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 2 Internal'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 2 Users Zone - VLAN 107
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 2 Users'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 2 Users Zone - VLAN 107
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 2 Users'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 2 Guest Zone - VLAN 108
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 2 Guest'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 2 Guest Zone - VLAN 108
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 2 Guest'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Webserver VM in Inf 2 DMZ Zone - VLAN 109
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Webserver Inf 2 DMZ'
-  #       template: Ubuntu_Webserver_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Webserver VM in Inf 2 DMZ Zone - VLAN 109
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Webserver Inf 2 DMZ'
+        template: Ubuntu_Webserver_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  # #Infrastrucuture 3
-  #   - name: Delete Ubuntu Test VM in Inf 3 External Zone - VLAN 110
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 3 External'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+  #Infrastrucuture 3
+    - name: Delete Ubuntu Test VM in Inf 3 External Zone - VLAN 110
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 3 External'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 3 Internal Zone - VLAN 111
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 3 Internal'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 3 Internal Zone - VLAN 111
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 3 Internal'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 3 Users Zone - VLAN 112
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 3 Users'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 3 Users Zone - VLAN 112
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 3 Users'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 3 Guest Zone - VLAN 113
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 3 Guest'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 3 Guest Zone - VLAN 113
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 3 Guest'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Webserver VM in Inf 3 DMZ Zone - VLAN 114
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Webserver Inf 3 DMZ'
-  #       template: Ubuntu_Webserver_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Webserver VM in Inf 3 DMZ Zone - VLAN 114
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Webserver Inf 3 DMZ'
+        template: Ubuntu_Webserver_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  # #Infrastrucuture 4
-  #   - name: Delete Ubuntu Test VM in Inf 4 External Zone - VLAN 115
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 4 External'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+  #Infrastrucuture 4
+    - name: Delete Ubuntu Test VM in Inf 4 External Zone - VLAN 115
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 4 External'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 4 Internal Zone - VLAN 116
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 4 Internal'
-  #       template: Ubuntu_Test_Template
-  #       state: absent   
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 4 Internal Zone - VLAN 116
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 4 Internal'
+        template: Ubuntu_Test_Template
+        state: absent   
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 4 Users Zone - VLAN 117
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 4 Users'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 4 Users Zone - VLAN 117
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 4 Users'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Test VM in Inf 4 Guest Zone - VLAN 118
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Test Inf 4 Guest'
-  #       template: Ubuntu_Test_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Test VM in Inf 4 Guest Zone - VLAN 118
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Test Inf 4 Guest'
+        template: Ubuntu_Test_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
 
-  #   - name: Delete Ubuntu Webserver VM in Inf 4 DMZ Zone - VLAN 119
-  #     vmware_guest:
-  #       hostname: '10.123.100.10'
-  #       esxi_hostname: '10.123.100.9'
-  #       datacenter: Datacenter
-  #       folder: /Datacenter/vm
-  #       name: 'Ubuntu Webserver Inf 4 DMZ'
-  #       template: Ubuntu_Webserver_Template
-  #       state: absent
-  #       force: yes
-  #     delegate_to: localhost
-  #     register: deploy
+    - name: Delete Ubuntu Webserver VM in Inf 4 DMZ Zone - VLAN 119
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: 'Ubuntu Webserver Inf 4 DMZ'
+        template: Ubuntu_Webserver_Template
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
