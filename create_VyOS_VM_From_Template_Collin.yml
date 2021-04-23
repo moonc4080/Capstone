@@ -34,7 +34,7 @@
         networks:
         - name: ISP_PG
         - name: Inf_1_External_PG
-        - name: Temporary Configuration PG        
+        - name: Configuration PG        
       delegate_to: localhost
       register: deploy
 
@@ -51,7 +51,7 @@
         networks:
         - name: ISP_PG
         - name: Inf_2_External_PG
-        - name: Temporary Configuration PG        
+        - name: Configuration PG        
       delegate_to: localhost
       register: deploy
 
@@ -68,7 +68,7 @@
         networks:
         - name: ISP_PG
         - name: Inf_3_External_PG
-        - name: Temporary Configuration PG        
+        - name: Configuration PG        
       delegate_to: localhost
       register: deploy
 
@@ -85,6 +85,6 @@
         networks:
         - name: ISP_PG
         - name: Inf_4_External_PG
-        - name: Temporary Configuration PG        
+        - name: Configuration PG        
       delegate_to: localhost
       register: deploy
