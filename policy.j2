@@ -1,0 +1,5 @@
+{{ ansible_managed | comment }}
+{% for item in shorewall_policies %}
+{{ item.source }}   {{ item.dest }}   {{ item.policy }}{% if item.log_level is defined and item.log_level != 'None' %}   {{ item.log_level }}{% endif %}
+
+{% endfor %}

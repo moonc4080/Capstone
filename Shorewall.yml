@@ -1,19 +1,20 @@
+---
 # defaults file for ansible-shorewall
 shorewall_config: true
 
 shorewall_config_options: # http://shorewall.net/manpages/shorewall.conf.html
-  accounting: "Yes" # [Yes|No]
-  ip_forwarding: "On" # [On|Off|Keep]
-  logformat: "Shorewall:%s:%s:" # ["formattemplate"]
-  logfile: /var/log/syslog # [pathname] - Default is /var/log/messages
-  loglevel: "info" # One of the syslog levels or NFLOG/ULOG settings, see Shorewall manual about logging
-  logtagonly: "No" # [Yes|No]
-  log_martians: "Yes" # [Yes|No|Keep]
-  log_verbosity: 2 # [-1=disabled|0=Silent|1=Major|2=All]
-  multicast: "No" # [Yes|No]
-  startup_enabled: "Yes" # [Yes|No]
-  startup_log: /var/log/shorewall-init.log # [pathname]
-  verbosity: 2 # [0=Silent|1=Major|2=All]
+  accounting: "Yes"
+  ip_forwarding: "On" 
+  logformat: "Shorewall:%s:%s:" 
+  logfile: /var/log/syslog 
+  loglevel: "info" 
+  logtagonly: "No"
+  log_martians: "Yes" 
+  log_verbosity: 2
+  multicast: "No"
+  startup_enabled: "Yes"
+  startup_log: /var/log/shorewall-init.log
+  verbosity: 2
   add_snat_aliases: "No"
 
 #
@@ -32,6 +33,8 @@ shorewall_DMZ_int: eth2
 shorewall_guest_int: eth3
 shorewall_users_int: eth4
 
+
+# Interfaces polocies
 shorewall_interfaces:
   - name: shorewall_external_int
     zone: net
@@ -40,6 +43,7 @@ shorewall_interfaces:
       - nosmurfs
       - sourceroute=0
       - tcpflags
+    # internal networks; servers etc.
   - name: shorewall_internal_int
     zone: internal
     options:
@@ -48,14 +52,16 @@ shorewall_interfaces:
       - nosmurfs
       - routefilter=2
       - tcpflags
+       # DMZ interface policies
   - name: shorwewall_DMZ_int
-    zone: dmz
+    zone: DMZ
     options:
       - dhcp
       - logmartians
       - nosmurfs
       - routefilter=2
       - tcpflags
+       # guest interface policies
   - name: shorewall_guest_int
     zone: guest
     options:
@@ -63,6 +69,8 @@ shorewall_interfaces:
       - logmartians
       - nosmurfs
       - routefilter=2
+      - tcpflags
+    # users interface policies
   - name: shorewall_users_int
     zone: users
     options:
@@ -70,11 +78,12 @@ shorewall_interfaces:
       - logmartians
       - nosmurfs
       - routefilter=2
+      - tcpflags
 
 shorewall_main_configuration: true
 
 shorewall_policies:
-
+    # zone interaction policies
   - source: $FW
     dest: net
     policy: ACCEPT
@@ -162,6 +171,7 @@ shorewall_policies:
     limit_burst: ""
 
 shorewall_rules:
+# port filtering rules
   - section: NEW
     rules:
     # management of pings between $FW and network
@@ -355,26 +365,31 @@ shorewall_zones:
     options:
     out_options:
     type: firewall
+
   - name: net
     in_options:
     options:
     out_options:
     type: ipv4
+
   - name: internal
     in_options:
     options:
     out_options:
     type: ipv4
+
   - name: DMZ
     in_optiions: 
     options:
     out_options:
     tpye: ipv4
+
   - name: guest
     in_options:
     options:
     out_options:
     type: ipv4
+
   - name: users
     in_options:
     options:

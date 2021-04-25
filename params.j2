@@ -1,0 +1,6 @@
+{{ ansible_managed | comment }}
+{% if shorewall_params is defined %}
+{%  for item in shorewall_params.keys() %}
+{{ item }}={{ shorewall_params[item] }}
+{%  endfor %}
+{% endif %}
