@@ -110,4 +110,4 @@
 - name: shorewall_config | Flush Handlers Immediately
   meta: flush_handlers
   become: true
-  when: shorewall_immediate_restart|bool
+  when: shorewall_immediate_restart|bool5

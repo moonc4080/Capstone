@@ -14,16 +14,16 @@
         datacenter: Datacenter
         folder: /Datacenter/vm
         name: Ubuntu Firewall 1
-        template: Ubuntu_firewall_template
+        template: Shorewall_Firewall_template
         state: poweredon
         disk:
-        - size_gb: 10
+        - size_gb: 64
           controller_type: lsilogicsas
           type: thin
           datastore: Capstone_Local_DS_VMs
         hardware:
           memory_mb: 1024
-          num_cpus: 1
+          num_cpus: 4
           num_cpu_cores_per_socket: 1
           scsi: paravirtual
           hotadd_cpu: True
@@ -47,3 +47,29 @@
         - name: INF_1_PG_DMZ
       delegate_to: localhost
       register: deploy
+
+
+#       ---
+# - name: Create Ubuntu VMs from Template
+#   hosts: localhost
+#   gather_facts: no
+#   collections:
+#     - community.vmware
+
+#   tasks: 
+
+#   #Infrastrucuture 1
+#     - name: Create Ubuntu Test VM in Inf 1 External Zone - VLAN 100
+#       vmware_guest:
+#         hostname: '10.123.100.10'
+#         esxi_hostname: '10.123.100.9'
+#         datacenter: Datacenter
+#         folder: /Datacenter/vm
+#         name: 'Ubuntu Test Inf 1 External'
+#         template: Ubuntu_Test_Template
+#         state: poweredon
+#         networks:
+#         - name: Inf_1_External_PG
+#           start_connected: yes
+#       delegate_to: localhost
+#       register: deploy
