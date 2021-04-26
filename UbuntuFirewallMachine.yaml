@@ -24,7 +24,7 @@
       delegate_to: localhost
       register: deploy
   
-    - name: Create a shorewall VM for Infrastructure 1
+    - name: Create a shorewall VM for Infrastructure 2
        vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
@@ -42,7 +42,7 @@
       delegate_to: localhost
       register: deploy
 
-    - name: Create a shorewall VM for Infrastructure 1
+    - name: Create a shorewall VM for Infrastructure 3
        vmware_guest:
        hostname: '10.123.100.10'
        esxi_hostname: '10.123.100.9'
@@ -60,7 +60,7 @@
       delegate_to: localhost
       register: deploy
 
-    - name: Create a shorewall VM for Infrastructure 1
+    - name: Create a shorewall VM for Infrastructure 4
         vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
