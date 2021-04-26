@@ -17,10 +17,10 @@
        state: poweredon
        networks:
         - name: Inf_1_External_PG
-        - name: INF_1_Internal_PG
-        - name: INF_1_Users_PG
-        - name: INF_1_DMZ_PG
-        - name: INF_1_Guest_PG
+        - name: Inf_1_Internal_PG
+        - name: Inf_1_Users_PG
+        - name: Inf_1_DMZ_PG
+        - name: Inf_1_Guest_PG
       delegate_to: localhost
       register: deploy
   
@@ -35,10 +35,10 @@
         state: poweredon
         networks:
         - name: Inf_2_External_PG
-        - name: INF_2_Internal_PG
-        - name: INF_2_Users_PG
-        - name: INF_2_DMZ_PG
-        - name: INF_2_Guest_PG
+        - name: Inf_2_Internal_PG
+        - name: Inf_2_Users_PG
+        - name: Inf_2_DMZ_PG
+        - name: Inf_2_Guest_PG
       delegate_to: localhost
       register: deploy
 
@@ -53,10 +53,10 @@
        state: poweredon
        networks:
         - name: Inf_3_External_PG
-        - name: INF_3_Internal_PG
-        - name: INF_3_Users_PG
-        - name: INF_3_DMZ_PG
-        - name: INF_3_Guest_PG
+        - name: Inf_3_Internal_PG
+        - name: Inf_3_Users_PG
+        - name: Inf_3_DMZ_PG
+        - name: Inf_3_Guest_PG
       delegate_to: localhost
       register: deploy
 
@@ -71,9 +71,9 @@
         state: poweredon
         networks:
         - name: Inf_4_External_PG
-        - name: INF_4_Internal_PG
-        - name: INF_4_Users_PG
-        - name: INF_4_DMZ_PG
-        - name: INF_4_Guest_PG
+        - name: Inf_4_Internal_PG
+        - name: Inf_4_Users_PG
+        - name: Inf_4_DMZ_PG
+        - name: Inf_4_Guest_PG
       delegate_to: localhost
       register: deploy
