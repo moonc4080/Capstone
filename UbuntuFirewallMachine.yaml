@@ -50,7 +50,7 @@
        folder: /Datacenter/vm
        name: INF 3 Firewall
        template: Shorewall_Firewall
-      state: poweredon
+       state: poweredon
        networks:
         - name: Inf_3_External_PG
         - name: INF_3_Internal_PG
