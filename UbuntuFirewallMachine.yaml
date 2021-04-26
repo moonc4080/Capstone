@@ -7,7 +7,7 @@
 
   tasks: 
     - name: Create a shorewall VM for Infrastructure 1
-     vmware_guest:
+      vmware_guest:
        hostname: '10.123.100.10'
        esxi_hostname: '10.123.100.9'
        datacenter: Datacenter
@@ -24,8 +24,8 @@
       delegate_to: localhost
       register: deploy
   
-   - name: Create a shorewall VM for Infrastructure 1
-      vmware_guest:
+    - name: Create a shorewall VM for Infrastructure 1
+       vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
@@ -42,8 +42,8 @@
       delegate_to: localhost
       register: deploy
 
-     - name: Create a shorewall VM for Infrastructure 1
-     vmware_guest:
+    - name: Create a shorewall VM for Infrastructure 1
+       vmware_guest:
        hostname: '10.123.100.10'
        esxi_hostname: '10.123.100.9'
        datacenter: Datacenter
@@ -60,8 +60,8 @@
       delegate_to: localhost
       register: deploy
 
-      - name: Create a shorewall VM for Infrastructure 1
-      vmware_guest:
+    - name: Create a shorewall VM for Infrastructure 1
+        vmware_guest:
         hostname: '10.123.100.10'
         esxi_hostname: '10.123.100.9'
         datacenter: Datacenter
