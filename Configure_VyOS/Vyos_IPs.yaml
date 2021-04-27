@@ -1,0 +1,127 @@
+# Created by Jack James
+# sets interfaces and NAT
+---
+- name: Create ethernet and IP scheme
+  gather_facts: false
+  hosts: all
+  # connection: local
+
+  tasks:
+          - name: Set eth0 IPv4 address
+            vyos.vyos.vyos_l3_interface:
+                    name: eth0
+                    ipv4: dhcp
+          - name: Set eth1 IPv4 address
+            vyos.vyos.vyos_l3_interface:
+                    name: eth1
+                    ipv4: 10.0.0.1/28
+
+- name: Create ethernet description
+  gather_facts: false
+  hosts: all
+  # connection: local
+
+  tasks:
+          - name: Set eth0 description
+            vyos.vyos.vyos_interfaces:
+                    config:
+                    - name: eth0
+                      description: Route to isp
+                      enabled: true
+
+          - name: Set eth1 description
+            vyos.vyos.vyos_interfaces:
+                    config:
+                    - name: eth1
+                      description: internal route to shorewall
+                      enabled: true
+
+- name: Create NAT
+  gather_facts: false
+  hosts: all
+  # connection: local
+
+  tasks:
+          - name: Configure Source NAT for our Inside network
+            vyos.vyos.vyos_config:
+              lines:
+              - set nat source rule 10 outbound-interface 'eth0' # Basically the exit door > NAT >O
+              - set nat source rule 10 source address '10.0.0.0/28'
+              - set nat source rule 10 translation address masquerade  
+
+- name: Create infastucture 1 vlan
+  gather_facts: false
+  hosts: vyos1
+  # connection: local
+
+  tasks:
+          - name: Create infastucture 1 vlan
+            vyos.vyos.vyos_vlan:
+              vlan_id: 100
+              name: vlan-100
+              interfaces: eth1
+              state: present
+
+- name: Create infastucture 2 vlan
+  gather_facts: false
+  hosts: vyos2
+  # connection: local
+
+  tasks:
+          - name: Create infastucture 2 vlan
+            vyos.vyos.vyos_vlan:
+              vlan_id: 105
+              name: vlan-105
+              interfaces: eth1
+              state: present
+
+- name: Create infastucture 3 vlan
+  gather_facts: false
+  hosts: vyos3
+  # connection: local
+
+  tasks:
+          - name: Create infastucture 3 vlan
+            vyos.vyos.vyos_vlan:
+              vlan_id: 110
+              name: vlan-110
+              interfaces: eth1
+              state: present
+
+- name: Create infastucture 4 vlan
+  gather_facts: false
+  hosts: vyos4
+  # connection: local
+
+  tasks:
+          - name: Create infastucture 4 vlan
+            vyos.vyos.vyos_vlan:
+              vlan_id: 115
+              name: vlan-115
+              interfaces: eth1
+              state: present
+
+- name: Create BGP
+  gather_facts: false
+  hosts: all
+  become_method: configure
+  # connection: local
+
+  tasks:
+          - name: Configure static bgp between ISP
+            vyos.vyos.vyos_config:
+              lines:
+              - set protocols bgp 65535
+              - set protocols bgp 65535 neighbor 67.127.16.1 remote-as 6
+              - set protocols bgp 65535 neighbor 67.127.16.1 update-source eth0
+              # set protocols bgp 65535 parameters router-id '10.10.10.10'
+              - set protocols bgp 65535 address-family ipv4-unicast network '10.0.0.0/28'
+              - set protocols bgp 65535 parameters router-id '4.4.4.4'
+#    - name: Show the Configuration
+#      vyos_command:
+#      commands:
+#      - show configuration commands
+# how to check? >show nat source translations
+# https://github.com/rcalvaga/vyos-ansible/blob/master/vyos-cfme-emb-ansible-launch-instance-and-configure-nat-gateway.yml
+# https://support.vyos.io/en/kb/articles/nat-basics-2
+# https://docs.vyos.io/en/latest/configuration/protocols/bgp.html
