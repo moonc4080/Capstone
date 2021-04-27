@@ -25,13 +25,13 @@ shorewall_config_options: # http://shorewall.net/manpages/shorewall.conf.html
 # MyIPAddress: 192.168.123.34
 
 # Defines internet facing interface
-shorewall_external_int: eth0
+shorewall_external_int: eth1
 
 # Defines local interface
-shorewall_internal_int: eth1
-shorewall_DMZ_int: eth2
-shorewall_guest_int: eth3
-shorewall_users_int: eth4
+shorewall_internal_int: eth2
+shorewall_DMZ_int: eth3
+shorewall_guest_int: eth4
+shorewall_users_int: eth5
 
 
 # Interfaces polocies
@@ -379,7 +379,7 @@ shorewall_zones:
     type: ipv4
 
   - name: DMZ
-    in_optiions: 
+    in_options: 
     options:
     out_options:
     tpye: ipv4

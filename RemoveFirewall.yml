@@ -1,0 +1,59 @@
+---
+- name: Create Ubntu VMs for firewall
+  hosts: localhost
+  gather_facts: no
+  collections:
+   - community.vmware
+
+  tasks: 
+    - name: Create a shorewall VM for Infrastructure 1
+      vmware_guest:
+       hostname: '10.123.100.10'
+       esxi_hostname: '10.123.100.9'
+       datacenter: Datacenter
+       folder: /Datacenter/vm
+       name: INF 1 Firewall
+       template: Shorewall_Firewall
+       state: absent
+       force: yes
+      delegate_to: localhost
+      register: deploy
+  
+    - name: Create a shorewall VM for Infrastructure 2
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: INF 2 Firewall
+        template: Shorewall_Firewall
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a shorewall VM for Infrastructure 3
+      vmware_guest:
+       hostname: '10.123.100.10'
+       esxi_hostname: '10.123.100.9'
+       datacenter: Datacenter
+       folder: /Datacenter/vm
+       name: INF 3 Firewall
+       template: Shorewall_Firewall
+       state: absent
+       force: yes
+      delegate_to: localhost
+      register: deploy
+
+    - name: Create a shorewall VM for Infrastructure 4
+      vmware_guest:
+        hostname: '10.123.100.10'
+        esxi_hostname: '10.123.100.9'
+        datacenter: Datacenter
+        folder: /Datacenter/vm
+        name: INF 4 Firewall
+        template: Shorewall_Firewall
+        state: absent
+        force: yes
+      delegate_to: localhost
+      register: deploy
