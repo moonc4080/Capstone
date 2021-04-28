@@ -34,7 +34,7 @@
         template: Shorewall_Firewall
         state: poweredon
         networks:
-        - name: configuration_PG
+        - name: Configuration PG
         - name: Inf_2_External_PG
         - name: Inf_2_Internal_PG
         - name: Inf_2_Users_PG
