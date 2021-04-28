@@ -16,6 +16,7 @@
        template: Shorewall_Firewall
        state: poweredon
        networks:
+        - name: Configuration PG
         - name: Inf_1_External_PG
         - name: Inf_1_Internal_PG
         - name: Inf_1_Users_PG
@@ -53,6 +54,7 @@
        template: Shorewall_Firewall
        state: poweredon
        networks:
+        - name: Configuration PG
         - name: Inf_3_External_PG
         - name: Inf_3_Internal_PG
         - name: Inf_3_Users_PG
@@ -71,6 +73,7 @@
         template: Shorewall_Firewall
         state: poweredon
         networks:
+        - name: Configuration PG
         - name: Inf_4_External_PG
         - name: Inf_4_Internal_PG
         - name: Inf_4_Users_PG
